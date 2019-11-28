@@ -15,6 +15,8 @@ import { PlatComponent } from './plat/plat.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { ProfilComponent } from './profil/profil.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LoginComponent } from './login/login.component';
     PlatComponent,
     IngredientsComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfilComponent,
+    RegisterComponent
   
   ],
   imports: [
