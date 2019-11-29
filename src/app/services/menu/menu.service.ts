@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class MenuService {
 
   constructor() { }
+
+  addIngredient(f) {
+    console.log(f);
+    
+  }
 }
