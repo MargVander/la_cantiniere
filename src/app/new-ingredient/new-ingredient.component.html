@@ -1,0 +1,11 @@
+<h1>Ajouter un nouvel ingrédient</h1>
+<form (ngSubmit)="Submit(f)" #f="ngForm">
+    <label for="">Nom</label><br/>
+    <input type="text" [ngModel]="label" name="label"><br/>
+    <label for="">Description</label><br/>
+    <input type="textarea" [ngModel]="description" name="description"><br/>
+    <label for="">Image</label><br/>
+    <input type="text" [ngModel]="image" name="image"><br/>
+    <button type="submit">Ajouter un ingredient</button>
+  </form>
+  

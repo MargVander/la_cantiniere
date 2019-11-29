@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuSemaineComponent } from './menu-semaine/menu-semaine.component';
 import { PanierComponent } from './panier/panier.component';
 import { PlatComponent } from './plat/plat.component';
+import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'ingredients', component: IngredientsComponent },
+  { path: 'newingredient', component: NewIngredientComponent },
   { path: 'login', component: LoginComponent },
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: 'panier', component: PanierComponent },
