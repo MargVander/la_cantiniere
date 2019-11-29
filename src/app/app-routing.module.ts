@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuSemaineComponent } from './menu-semaine/menu-semaine.component';
 import { PanierComponent } from './panier/panier.component';
 import { PlatComponent } from './plat/plat.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'plat', component: PlatComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
