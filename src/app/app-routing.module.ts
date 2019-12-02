@@ -12,11 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { MenuSemaineComponent } from './menu-semaine/menu-semaine.component';
 import { PanierComponent } from './panier/panier.component';
 import { PlatComponent } from './plat/plat.component';
-<<<<<<< HEAD
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
-=======
 import { RegisterComponent } from './register/register.component';
->>>>>>> dev
 
 
 const routes: Routes = [
