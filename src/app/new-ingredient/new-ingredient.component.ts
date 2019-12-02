@@ -24,7 +24,7 @@ export class NewIngredientComponent implements OnInit {
   }
 
   submit(){
-    this.menuService.addIngredient(this.form)
+    this.menuService.addIngredient(this.form.value)
   }
 
 }
