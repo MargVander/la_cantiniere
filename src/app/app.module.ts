@@ -18,7 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -44,8 +44,6 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    FormsModule,
     HttpClientModule,
   ],
   providers: [],

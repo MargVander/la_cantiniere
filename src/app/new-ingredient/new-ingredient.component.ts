@@ -8,23 +8,23 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
   styleUrls: ['./new-ingredient.component.css']
 })
 export class NewIngredientComponent implements OnInit {
-  private form: FormGroup;
+
+  ingredientForm = this.formBuilder.group({
+    label: ['', Validators.required],
+    description: ['', Validators.required], 
+    image: ['', Validators.required],
+  });
 
   constructor(private menuService: MenuService, private formBuilder: FormBuilder) {
-    this.form =  new FormGroup(
-      {
-        label: new FormControl('', [Validators.minLength(3), Validators.required]),
-        description: new FormControl('', [Validators.minLength(3), Validators.required]),
-        image: new FormControl('', Validators.required)
-      }
-    )
+    
   }
+    
 
   ngOnInit() {
   }
 
-  submit(){
-    this.menuService.addIngredient(this.form.value)
+  onSubmit(){
+    this.menuService.addIngredient(this.ingredientForm.value)
   }
 
 }
