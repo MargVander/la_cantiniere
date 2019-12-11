@@ -14,6 +14,7 @@ import { PanierComponent } from './panier/panier.component';
 import { PlatComponent } from './plat/plat.component';
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { RegisterComponent } from './register/register.component';
+import { NewMealComponent } from './new-meal/new-meal.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'panier', component: PanierComponent },
   { path: 'plat', component: PlatComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'newmeal', component: NewMealComponent },
 ];
 
 @NgModule({

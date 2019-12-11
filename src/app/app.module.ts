@@ -19,6 +19,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { NewMealComponent } from './new-meal/new-meal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     LoginComponent,
     ProfilComponent,
     RegisterComponent,
-    NewIngredientComponent,  
+    NewIngredientComponent,
+    NewMealComponent,  
   ],
   imports: [
     BrowserModule,

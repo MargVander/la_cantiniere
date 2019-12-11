@@ -12,7 +12,7 @@ export class NewIngredientComponent implements OnInit {
   ingredientForm = this.formBuilder.group({
     label: ['', Validators.required],
     description: ['', Validators.required], 
-    image: ['', Validators.required],
+    image: ['', Validators.required], 
   });
 
   constructor(private menuService: MenuService, private formBuilder: FormBuilder) {
