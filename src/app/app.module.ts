@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NewMealComponent } from './new-meal/new-meal.component';
+import { NewMenuComponent } from './new-menu/new-menu.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NewMealComponent } from './new-meal/new-meal.component';
     ProfilComponent,
     RegisterComponent,
     NewIngredientComponent,
-    NewMealComponent,  
+    NewMealComponent,
+    NewMenuComponent,  
   ],
   imports: [
     BrowserModule,
