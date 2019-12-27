@@ -53,11 +53,9 @@ export class MenuService {
    return this.http.get('http://localhost:8080/lunchtime/meal/findall', { headers: reqHeader })
   }
 
-  getMealsByDay() {
-    var reqHeader = new HttpHeaders({ 
-      'Content-Type': 'application/json',
-   });   
-   return this.http.get('http://localhost:8080/lunchtime/meal/findallavailablefortoday')  }
+  getMealsByDay() { 
+   return this.http.get('http://localhost:8080/lunchtime/meal/findallavailablefortoday') 
+  }
 
   addMenu(data: any) {
     console.log(data);
@@ -72,6 +70,10 @@ export class MenuService {
     }, error => {
       console.log(error);
     })
+  }
+
+  getMenusByDay() { 
+   return this.http.get('http://localhost:8080/lunchtime/menu/findallavailablefortoday'); 
   }
 }
 

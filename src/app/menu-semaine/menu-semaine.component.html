@@ -1,1 +1,13 @@
-<p>menu-semaine works!</p>
+<div class="d-flex flex-wrap justify-content-around">
+    <div class="card mb-4" style="width: 200px;" *ngFor="let menu of menus">
+        <div class="card-body">
+          <h5 class="card-title">{{menu.label}}</h5>
+          <p class="card-text">{{menu.description}}</p>
+          <ul>
+              <li *ngFor="let meal of menu.meals">
+                {{meal.label}}
+              </li>
+          </ul>
+        </div>
+      </div>
+  </div>
