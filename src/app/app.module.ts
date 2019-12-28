@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -18,6 +17,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
+import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { NewMealComponent } from './new-meal/new-meal.component';
+import { NewMenuComponent } from './new-menu/new-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,16 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     LoginComponent,
     ProfilComponent,
-    RegisterComponent
-  
+    RegisterComponent,
+    NewIngredientComponent,
+    NewMealComponent,
+    NewMenuComponent,  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

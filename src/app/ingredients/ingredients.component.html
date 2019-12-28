@@ -1,1 +1,28 @@
-<p>ingredients works!</p>
+
+
+<div class="container">
+        <a [routerLink]="['/newingredient']">Ajouter un nouvel ingrédient</a>
+
+  <table>
+      <thead>
+          <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let ingredient of ingredients">
+              <td>{{ingredient.label}}</td>
+              <td>{{ingredient.description}}</td>
+              <td>
+                  <img style="height: 50px;" src='http://localhost:8080/lunchtime/{{ingredient.image}}' alt="">
+              </td>
+              <td>
+                  {{ingredient.status}}
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

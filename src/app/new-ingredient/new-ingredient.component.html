@@ -1,0 +1,13 @@
+<h1>Ajouter un nouvel ingrédient</h1>
+<form [formGroup]="ingredientForm" (ngSubmit)='onSubmit()' >
+    <div class="form-group">
+    <label for="">Nom</label><br/>
+    <input class="form-control" type="text" formControlName="label" required>
+  </div>
+    <label for="">Description</label><br/>
+    <input class="form-control" type="textarea" formControlName="description" required><br/>
+    <label for="">Image</label><br/>
+    <input class="form-control" type="text" formControlName="image" required><br/>
+    <button type="submit" class="btn btn-primary" [disabled]="!ingredientForm.valid">Ajouter un ingredient</button>
+  </form>
+  
