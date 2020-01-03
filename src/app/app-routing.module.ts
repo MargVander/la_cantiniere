@@ -16,6 +16,7 @@ import { NewIngredientComponent } from './new-ingredient/new-ingredient.componen
 import { RegisterComponent } from './register/register.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'newmeal', component: NewMealComponent },
   { path: 'newmenu', component: NewMenuComponent },
+  { path:'ingredientedit/:id',component:IngredientEditComponent}
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@ import { NewIngredientComponent } from './new-ingredient/new-ingredient.componen
 import { ReactiveFormsModule } from "@angular/forms";
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NewMenuComponent } from './new-menu/new-menu.component';
     RegisterComponent,
     NewIngredientComponent,
     NewMealComponent,
-    NewMenuComponent,  
+    NewMenuComponent,
+    IngredientEditComponent,  
   ],
   imports: [
     BrowserModule,
