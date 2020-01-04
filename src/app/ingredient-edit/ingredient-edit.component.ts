@@ -15,7 +15,7 @@ export class IngredientEditComponent implements OnInit {
   id:number;
   public ingredient: any;
   private souscription: Subscription;
-  ingredientForm = FormGroup
+  ingredientForm: FormGroup
   
 
 
