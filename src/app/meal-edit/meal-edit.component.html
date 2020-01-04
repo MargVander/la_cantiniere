@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Ajouter un nouvel plat</h1>
+    <h1>Editer</h1>
     <form [formGroup]="mealForm" (ngSubmit)='onSubmit()' >
         <div class="form-group">
           <label for="">Nom</label>
@@ -36,7 +36,7 @@
     
     
         <div class="center">
-            <button type="submit" class="btn" [disabled]="!mealForm.valid">Ajouter</button>
+            <button type="submit" class="btn" [disabled]="!mealForm.valid">Valider</button>
         </div>
         </form>
     </div>

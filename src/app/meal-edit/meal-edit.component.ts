@@ -23,7 +23,6 @@ export class MealEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.id);
     this.getIngredients()
     this.getMeal(this.id)
   }
@@ -59,8 +58,8 @@ export class MealEditComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.mealForm.value);
-    this.menuService.editMeal(this.id, this.mealForm.value)
+    this.menuService.editMeal(this.id, this.mealForm.value);
+    this.router.navigate(['/meals']);
 
   }
 

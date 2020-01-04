@@ -24,6 +24,8 @@ import { NewMenuComponent } from './new-menu/new-menu.component';
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MenusComponent } from './menus/menus.component';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { MealEditComponent } from './meal-edit/meal-edit.component';
     NewMenuComponent,
     IngredientEditComponent,
     MealsComponent,
-    MealEditComponent,  
+    MealEditComponent,
+    MenusComponent,
+    MenuEditComponent,  
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,12 @@
 <div class="container">
-    <a [routerLink]="['/newmeal']">Ajouter un nouvel ingrédient</a>
+    <a [routerLink]="['/newmeal']">Ajouter un nouvel plat</a>
 
 <table>
   <thead>
       <tr>
           <th>Nom</th>
           <th>Description</th>
+          <th>Prix</th>
           <th>Ingrédients</th>
           <th>Disponibilité</th>
           <th>Status</th>
@@ -15,7 +16,8 @@
   <tbody>
       <tr *ngFor="let meal of meals">
           <td>{{meal.label}}</td>
-          <td>{{meals.description}}</td>
+          <td>{{meal.description}}</td>
+          <td>{{meal.priceDF}}€</td>
           <td>
               <span *ngFor="let ingredient of meal.ingredients">{{ingredient.label}}, </span>
           </td>
