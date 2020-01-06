@@ -34,5 +34,19 @@ returnUrl: string;
   get f() { return this.loginForm.controls; }
   onSubmit() {
     this.submitted = true;
-  }
-}
+    if (this.loginForm.invalid){return;
+    }
+    this.loading = true;
+    this.authenticationService.login
+    (this.f.username.value, this.f.password.value)
+        .pipe(first())
+        .subscribe(
+            data=>{
+              this.router.navigate(
+                  [this.returnUrl]);
+              },
+                error => {
+              this.alertService.error(error);
+              this.loading = false;
+                });
+            }}
