@@ -16,11 +16,18 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { PlatComponent } from './plat/plat.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
+import { NewMealComponent } from './new-meal/new-meal.component';
+import { NewMenuComponent } from './new-menu/new-menu.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { MealsComponent } from './meals/meals.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MenusComponent } from './menus/menus.component';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +43,18 @@ import { HttpClientModule } from '@angular/common/http';
     PlatComponent,
     IngredientsComponent,
     FooterComponent,
-    LoginComponent,
     ProfilComponent,
-    RegisterComponent
-
+    RegisterComponent,
+    NewIngredientComponent,
+    NewMealComponent,
+    NewMenuComponent,
+    IngredientEditComponent,
+    MealsComponent,
+    MealEditComponent,
+    MenusComponent,
+    MenuEditComponent,
   ],
+
   imports: [
     BrowserModule,
     CommonModule,

@@ -1,1 +1,25 @@
-<p>contact works!</p>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Nom
+        <input type="text" formControlName="name" required>
+    </label>
+
+    <label>
+        Email
+        <input type="text" formControlName="email" required>
+    </label>
+
+    <label>
+        Sujet
+        <input type="text" formControlName="subject" required>
+    </label>
+
+    <label>
+        Votre message
+        <input type="text" formControlName="description" required>
+    </label>
+
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+
+</form>

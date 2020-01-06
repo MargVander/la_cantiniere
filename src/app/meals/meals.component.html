@@ -1,0 +1,36 @@
+<div class="container">
+    <a [routerLink]="['/newmeal']">Ajouter un nouvel plat</a>
+
+<table>
+  <thead>
+      <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Prix</th>
+          <th>Ingrédients</th>
+          <th>Disponibilité</th>
+          <th>Status</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let meal of meals">
+          <td>{{meal.label}}</td>
+          <td>{{meal.description}}</td>
+          <td>{{meal.priceDF}}€</td>
+          <td>
+              <span *ngFor="let ingredient of meal.ingredients">{{ingredient.label}}, </span>
+          </td>
+          <td>
+            <span *ngFor="let week of meal.availableForWeeks">{{week}}, </span>
+        </td>
+          <td>
+              {{meal.status}}
+          </td>
+          <td>
+                <a [routerLink]="['/mealedit', meal.id]">Editer</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+</div>

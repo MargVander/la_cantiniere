@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from '../services/menu/menu.service'
+import { Subscription } from 'rxjs'
+
 
 @Component({
   selector: 'app-menu-semaine',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuSemaineComponent implements OnInit {
 
-  constructor() { }
+  private souscription: Subscription;
+  public menus: any;
+
+
+  constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-  }
+    this.getMenusByDay();
+  };
+
+  getMenusByDay() {    
+    this.souscription = this.menuService.getMenusByDay()
+    .subscribe(
+      resp => {
+        this.menus = resp;
+        console.log(this.menus);
+      }
+    )    
+  };
 
 }
