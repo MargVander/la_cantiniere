@@ -30,4 +30,8 @@ export class IngredientsComponent implements OnInit {
     )    
   }
 
+  deleteIngredient(id) {
+    this.menuService.deleteIngredient(id)
+  }
+
 }
