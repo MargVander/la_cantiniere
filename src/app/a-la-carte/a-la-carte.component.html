@@ -1,9 +1,15 @@
+  <div class="container">
     <div class="d-flex flex-wrap justify-content-around">
-        <div class="card mb-4" style="width: 200px;" *ngFor="let meal of meals">
+        <div class="card mb-4" style="width: 170px;" *ngFor="let meal of meals">
             <img class="card-img-top" src='http://localhost:8080/lunchtime/{{meal.image}}' alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{meal.label}}</h5>
+              <h5 class="card-title"><a href="#">{{meal.label}}</a></h5>
+              <h6 class="card-title">{{meal.priceDF}}€</h6>
               <p class="card-text">{{meal.description}}</p>
+              <a href="#">
+              <img class="cart" src="../../assets/img/shopping-cart.svg" alt="">
+            </a>
             </div>
           </div>
       </div>
+    </div>  

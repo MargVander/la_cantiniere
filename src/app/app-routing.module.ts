@@ -16,6 +16,11 @@ import { NewIngredientComponent } from './new-ingredient/new-ingredient.componen
 import { RegisterComponent } from './register/register.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { MealsComponent } from './meals/meals.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MenusComponent } from './menus/menus.component';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 
 const routes: Routes = [
@@ -35,6 +40,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'newmeal', component: NewMealComponent },
   { path: 'newmenu', component: NewMenuComponent },
+  { path:'ingredientedit/:id',component: IngredientEditComponent},
+  { path:'meals',component: MealsComponent },
+  { path:'mealedit/:id',component: MealEditComponent },
+  { path: 'menus', component: MenusComponent },
+  { path: 'menuedit/:id', component: MenuEditComponent }
 ];
 
 @NgModule({

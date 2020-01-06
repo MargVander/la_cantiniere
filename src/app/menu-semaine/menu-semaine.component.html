@@ -1,13 +1,17 @@
+<div class="container">
 <div class="d-flex flex-wrap justify-content-around">
-    <div class="card mb-4" style="width: 200px;" *ngFor="let menu of menus">
+    <div class="card mb-4" style="width: 170px;" *ngFor="let menu of menus">
         <div class="card-body">
           <h5 class="card-title">{{menu.label}}</h5>
+          <h6 class="card-title price">{{menu.priceDF}}€</h6>
           <p class="card-text">{{menu.description}}</p>
-          <ul>
-              <li *ngFor="let meal of menu.meals">
-                {{meal.label}}
-              </li>
-          </ul>
+              <p *ngFor="let meal of menu.meals">
+                <a href="#">{{meal.label}}</a>
+              </p>
+              <a href="#">
+              <img class="cart" src="../../assets/img/shopping-cart.svg" alt="">
+            </a>
         </div>
       </div>
   </div>
+</div>
