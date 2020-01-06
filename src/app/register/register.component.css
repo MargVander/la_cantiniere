@@ -1,0 +1,13 @@
+.red {
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+input {
+    height: 20px;
+}
