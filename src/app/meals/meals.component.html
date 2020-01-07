@@ -1,5 +1,5 @@
 <div class="container">
-    <a [routerLink]="['/newmeal']">Ajouter un nouvel plat</a>
+    <a class="addnew" [routerLink]="['/newmeal']">Ajouter un nouvel plat</a>
 
 <table>
   <thead>
@@ -9,7 +9,7 @@
           <th>Prix</th>
           <th>Ingrédients</th>
           <th>Disponibilité</th>
-          <th>Status</th>
+          <th></th>
           <th></th>
       </tr>
   </thead>
@@ -25,10 +25,10 @@
             <span *ngFor="let week of meal.availableForWeeks">{{week}}, </span>
         </td>
           <td>
-              {{meal.status}}
+                <a [routerLink]="['/mealedit', meal.id]">Editer</a>
           </td>
           <td>
-                <a [routerLink]="['/mealedit', meal.id]">Editer</a>
+                <button (click)='deleteMeal(meal.id)'>Supprimer</button>
           </td>
       </tr>
   </tbody>
