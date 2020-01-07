@@ -20,6 +20,7 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'meals', component: MealsComponent },
   { path: 'mealedit/:id', component: MealEditComponent },
   { path: 'menus', component: MenusComponent },
-  { path: 'menuedit/:id', component: MenuEditComponent }
+  { path: 'menuedit/:id', component: MenuEditComponent },
+  { path: 'users', component: UsersComponent }
 ];
 
 @NgModule({

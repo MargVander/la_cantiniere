@@ -17,15 +17,15 @@ export class MealsComponent implements OnInit {
     this.getMeals()
   }
 
-  getMeals(){
+  getMeals() {
     this.souscription = this.menuService.getMeals()
-    .subscribe(
-      resp => {
-        this.meals = resp;
-        console.log(this.meals);
-        
-      }
-    )    
+      .subscribe(
+        resp => {
+          this.meals = resp;
+          console.log(this.meals);
+
+        }
+      )
   }
 
 }
