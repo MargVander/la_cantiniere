@@ -28,4 +28,8 @@ export class MealsComponent implements OnInit {
       )
   }
 
+  deleteMeal(id) {
+    this.menuService.deleteMeal(id)
+  }
+
 }

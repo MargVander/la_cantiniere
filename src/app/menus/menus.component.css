@@ -1,0 +1,21 @@
+.container{
+    margin-top: 20px;
+}
+.addnew{
+    color: #EA932A;
+}
+table{
+    width: 100%;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+td{
+    padding: 0 10px;
+}
+button{
+    border: none;
+    background: none;
+    color: rgb(206, 1, 1);
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
