@@ -1,1 +1,250 @@
-<p>menu-semaine works!</p>
+<div class="container">
+    <div class="row row-centered ">
+        <div class="col-4 col-centered mt-4">
+            <div class="card">
+
+                <div class="card-body">
+                    <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
+                        <h5 class="card-title text-center">Lundi</h5>
+                    </button>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 1
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-centered mt-4">
+            <div class="card">
+
+                <div class="card-body">
+                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
+                        <h5 class="card-title">Mardi</h5>
+                    </button>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 1
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 2
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-centered mt-4">
+            <div class="card">
+
+                <div class="card-body">
+                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
+                        <h5 class="card-title">Mercredi</h5>
+                        </button>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 1
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-centered mt-4">
+            <div class="card">
+
+                <div class="card-body">
+                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
+                        <h5 class="card-title">Jeudi</h5>
+                        </button>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 1
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-centered mt-4">
+            <div class="card">
+
+                <div class="card-body">
+                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
+                        <h5 class="card-title">Vendredi</h5>
+                        </button>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 1
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="..." class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                MENU 2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Formulaire Modal -->
+<ng-template #mymodal let-modal>
+    <!-- titre modal -->
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Jour de la semaine</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- fin titre modal -->
+
+    <!-- corp modal -->
+    <div class="modal-body">
+        <!-- debut form -->
+        <!-- TODO METTRE EN PLACE RECUP VALUE -->
+        <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-3">
+                    <!-- Groupe boutons radios - plat 1 -->
+                    <div class="form-check mt-2">
+                        <input value="plat_1" formControlName="choixPlat" type="radio" class="form-check-input" id="boutonCheckPlat1"
+                            name="choixPlat">
+                        <label  class="form-check-label " for="boutonCheckPlat1">Plat 1</label>
+                    </div>
+                    <!-- Group  boutons radios - plat 2 -->
+                    <div class="form-check mt-5">
+                        <input value="plat_2" formControlName="choixPlat" type="radio" class="form-check-input " id="boutonCheckPlat2"
+                            name="choixPlat">
+                        <label class="form-check-label " for="boutonCheckPlat2">Plat 2</label>
+                    </div>
+                </div>
+                <div class="col-3 mt-4">
+                    <!-- Groupe boutons radios - plat solo -->
+                    <div class="form-check">
+                        <input value="plat_seul" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-1"
+                            name="platFormuleChoix">
+                        <label class="form-check-label" for="platFormule-1">Plat seul</label>
+                    </div>
+                    <!-- Group boutons radios - formule  -->
+                    <div class="form-check">
+                        <input value="formule" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-2"
+                            name="platFormuleChoix" checked>
+                        <label class="form-check-label" for="platFormule-2">Formule</label>
+                    </div>
+                </div>
+                <!-- choix quantité TODO Faire incrementation -->
+                <div class="col-3 mt-4">
+                    <div class="container">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-number" (click)="quantiteRepas = quantitePlat-1" data-type="minus"
+                                    data-field="quant[1]" max="0">
+                                    -
+                                </button>
+                            </span>
+                            <input formControlName="quantiteRepas" type="text" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
+                                max="10">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-number" (click)="quantiteRepas = quantitePlat+1" data-type="plus"
+                                    data-field="quant[1]">
+                                    +
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 mt-4">
+                    <button type="submit" class="btn btn-success">Ajouter au panier</button>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-center"></div>
+            </div>
+        </form>
+    </div>
+    <!-- fin corp modal -->
+
+    <div class="modal-footer">
+        <div class="col text-center">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
+        </div>
+    </div>
+</ng-template>
