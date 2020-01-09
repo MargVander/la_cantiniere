@@ -1,9 +1,14 @@
-<header id="header">
-    <img class="logo" src="../../assets/img/Koh-Lanta,_la_nouvelle_édition.png" alt="logo">
-    <a [routerLink]="['menu-semaine']"> Menu de la semaine </a>
-    <a [routerLink]="['a-la-carte']"> A la carte </a>
+<header>
+    <div id="header">
+        <a class="logo" [routerLink]="['/']"><img src="../../assets/img/bucket-for-tea.svg" alt="spoon">La Cantinière</a>
+        <div class="links">
+            <a [routerLink]="['login']">Connexion</a>
+            <a [routerLink]="['panier']">Panier</a>
+        </div>
+    </div>
+    <div id="subheader">
+            <a [routerLink]="['menu-semaine']">Menu</a>
+            <a [routerLink]="['a-la-carte']">À la carte</a>
 
-    <a [routerLink]="['login']"> Connexion </a>
-    <a [routerLink]="['register']"> Inscription </a>
-    <a [routerLink]="['panier']"><img class="logo" src="../../assets/img/panier.png"></a>
+    </div>
 </header>

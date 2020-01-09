@@ -1,0 +1,36 @@
+<div class="container">
+        <a class="addnew" [routerLink]="['/newmenu']">Ajouter un nouvel menu</a>
+    
+    <table>
+      <thead>
+          <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Prix</th>
+              <th>Ingrédients</th>
+              <th>Disponibilité</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let menu of menus">
+              <td>{{menu.label}}</td>
+              <td>{{menu.description}}</td>
+              <td>{{menu.priceDF}}€</td>
+              <td>
+                  <span *ngFor="let meal of menu.meals">{{meal.label}}, </span>
+              </td>
+              <td>
+                <span *ngFor="let week of menu.availableForWeeks">{{week}}, </span>
+            </td>
+              <td>
+                <a [routerLink]="['/menuedit', menu.id]">Editer</a>
+              </td>
+              <td>
+                    <button (click)='deleteMenu(menu.id)'>Supprimer</button>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+    </div>

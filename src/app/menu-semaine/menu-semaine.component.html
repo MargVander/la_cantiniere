@@ -1,169 +1,22 @@
 <div class="container">
-    <div class="row row-centered ">
-        <div class="col-4 col-centered mt-4">
-            <div class="card">
-
-                <div class="card-body">
-                    <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
-                        <h5 class="card-title text-center">Lundi</h5>
-                    </button>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 1
-                            </p>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 2
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div>
+  <div class="d-flex flex-wrap justify-content-around">
+    <div class="card mb-4" style="width: 170px;" *ngFor="let menu of menus">
+        <div class="card-body">
+          <h5 class="card-title" (click)="openLg(mymodal)">{{menu.label}}</h5>
+          <h6 class="card-title price">{{menu.priceDF}}€</h6>
+          <p class="card-text">{{menu.description}}</p>
+              <p *ngFor="let meal of menu.meals">
+                <a href="#">{{meal.label}}</a>
+              </p>
+              <a href="#">
+              <img class="cart" src="../../assets/img/shopping-cart.svg" alt="">
+            </a>
         </div>
-        <div class="col-4 col-centered mt-4">
-            <div class="card">
-
-                <div class="card-body">
-                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
-                        <h5 class="card-title">Mardi</h5>
-                    </button>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 1
-                            </p>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 2
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-4 col-centered mt-4">
-            <div class="card">
-
-                <div class="card-body">
-                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
-                        <h5 class="card-title">Mercredi</h5>
-                        </button>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 1
-                            </p>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 2
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-centered mt-4">
-            <div class="card">
-
-                <div class="card-body">
-                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
-                        <h5 class="card-title">Jeudi</h5>
-                        </button>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 1
-                            </p>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 2
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-centered mt-4">
-            <div class="card">
-
-                <div class="card-body">
-                        <button type="button" class="btn btn-link" (click)="openLg(mymodal)">
-                        <h5 class="card-title">Vendredi</h5>
-                        </button>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 1
-                            </p>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="..." class="card-img-top" alt="...">
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                MENU 2
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
+  </div>
 </div>
+
 <!-- Formulaire Modal -->
 <ng-template #mymodal let-modal>
     <!-- titre modal -->
@@ -211,24 +64,11 @@
                 </div>
                 <!-- choix quantité TODO Faire incrementation -->
                 <div class="col-3 mt-4">
-                    <div class="container">
                         <div class="input-group">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default btn-number" (click)="quantiteRepas = quantitePlat-1" data-type="minus"
-                                    data-field="quant[1]" max="0">
-                                    -
-                                </button>
-                            </span>
-                            <input formControlName="quantiteRepas" type="text" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
+                            <input formControlName="quantiteRepas" type="number" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
                                 max="10">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default btn-number" (click)="quantiteRepas = quantitePlat+1" data-type="plus"
-                                    data-field="quant[1]">
-                                    +
-                                </button>
-                            </span>
                         </div>
-                    </div>
+                    
                 </div>
                 <div class="col-3 mt-4">
                     <button type="submit" class="btn btn-success">Ajouter au panier</button>

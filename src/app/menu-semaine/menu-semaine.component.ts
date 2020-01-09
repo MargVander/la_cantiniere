@@ -3,17 +3,24 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { MenuService } from '../services/menu/menu.service'
+import { Subscription } from 'rxjs'
+
 
 @Component({
   selector: 'app-menu-semaine',
   templateUrl: './menu-semaine.component.html',
   styleUrls: ['./menu-semaine.component.css']
 })
+
 export class MenuSemaineComponent implements OnInit {
 
   closeResult: string;
   quantitePlat: number = 1;
   modalOptions:NgbModalOptions;
+  private souscription: Subscription;
+  public menus: any;
+
 
     menuForm = this.formBuilder.group({
     choixPlat: ['', Validators.required],
@@ -21,8 +28,9 @@ export class MenuSemaineComponent implements OnInit {
     quantiteRepas: [  '', Validators.required]
     });
 
-  constructor( private modalService: NgbModal, private formBuilder : FormBuilder) {
-    
+  constructor( private menuService: MenuService, private modalService: NgbModal, private formBuilder : FormBuilder) {
+
+      
       this.modalOptions = {
       backdrop: 'static',
       backdropClass: 'customBackdrop',
@@ -47,12 +55,33 @@ export class MenuSemaineComponent implements OnInit {
       }
     }
 
+  compteur(x){
+    
+    if(x = "a") {
+      this.quantitePlat--;
+    } if(x!= "a") {
+      this.quantitePlat++;
+    }
+  }
+
   onSubmit() {
     console.log('Form submitted !', this.menuForm.value);
     this.menuForm.reset();
   }
 
+  
   ngOnInit() {
-  }
+    this.getMenusByDay();
+  };
+
+  getMenusByDay() {    
+    this.souscription = this.menuService.getMenusByDay()
+    .subscribe(
+      resp => {
+        this.menus = resp;
+        console.log(this.menus);
+      }
+    )    
+  };
 
 }
