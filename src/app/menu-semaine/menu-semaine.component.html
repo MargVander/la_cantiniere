@@ -31,7 +31,7 @@
     <!-- corp modal -->
     <div class="modal-body">
         <!-- debut form -->
-        <!-- TODO METTRE EN PLACE RECUP VALUE -->
+        
         <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-3">
@@ -62,7 +62,7 @@
                         <label class="form-check-label" for="platFormule-2">Formule</label>
                     </div>
                 </div>
-                <!-- choix quantité TODO Faire incrementation -->
+                 
                 <div class="col-3 mt-4">
                         <div class="input-group">
                             <input formControlName="quantiteRepas" type="number" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
