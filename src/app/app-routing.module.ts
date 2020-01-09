@@ -8,7 +8,6 @@ import { CommandesComponent } from './commandes/commandes.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { LoginComponent } from './login/login.component';
 import { MenuSemaineComponent } from './menu-semaine/menu-semaine.component';
 import { PanierComponent } from './panier/panier.component';
 import { PlatComponent } from './plat/plat.component';
@@ -21,6 +20,7 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import {LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [
@@ -33,18 +33,18 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'ingredients', component: IngredientsComponent },
   { path: 'newingredient', component: NewIngredientComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'plat', component: PlatComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'newmeal', component: NewMealComponent },
   { path: 'newmenu', component: NewMenuComponent },
-  { path:'ingredientedit/:id',component: IngredientEditComponent},
-  { path:'meals',component: MealsComponent },
-  { path:'mealedit/:id',component: MealEditComponent },
+  { path: 'ingredientedit/:id', component: IngredientEditComponent },
+  { path: 'meals', component: MealsComponent },
+  { path: 'mealedit/:id', component: MealEditComponent },
   { path: 'menus', component: MenusComponent },
-  { path: 'menuedit/:id', component: MenuEditComponent }
+  { path: 'menuedit/:id', component: MenuEditComponent },
+  {path:'login', component: LoginComponent}
 ];
 
 @NgModule({

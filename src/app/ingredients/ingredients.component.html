@@ -1,14 +1,14 @@
 
 
 <div class="container">
-        <a [routerLink]="['/newingredient']">Ajouter un nouvel ingrédient</a>
+        <a class="addnew" [routerLink]="['/newingredient']">Ajouter un nouvel ingrédient</a>
 
   <table>
       <thead>
           <tr>
               <th>Nom</th>
               <th>Description</th>
-              <th>Status</th>
+              <th></th>
               <th></th>
           </tr>
       </thead>
@@ -17,10 +17,10 @@
               <td>{{ingredient.label}}</td>
               <td>{{ingredient.description}}</td>
               <td>
-                  {{ingredient.status}}
+                <a [routerLink]="['/ingredientedit', ingredient.id]">Editer</a>
               </td>
               <td>
-                <a [routerLink]="['/ingredientedit', ingredient.id]">Editer</a>
+                <button (click)='deleteIngredient(ingredient.id)'>Supprimer</button>
               </td>
           </tr>
       </tbody>

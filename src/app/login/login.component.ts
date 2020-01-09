@@ -1,51 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import { first } from 'rxjs/operators';
-
-class AlertService {
-}
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable } from 'rxjs'
+import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-@Component({templateUrl: 'login.component.html'})
-export class loginComponent implements OnInit {
-loginForm: FormGroup;
-loading = false;
-submitted = false;
-returnUrl: string;
-  constructor(
-  private  formBuilder: FormBuilder,
-  private route: ActivatedRoute,
-  private router: Router,
-  private  authenticationService: AuthenticationService,
-  private alertService: AlertService
-  ) {
-      if (this.authenticationService . currentUserValue ) {this.router.navigate(['/']);
-      }
+export class LoginComponent implements OnInit {
+  registerForm: FormGroup;
+  jl: string;
+  jl2: string;
+  constructor(fb: FormBuilder, private service:UserService ) {
+    this.registerForm = fb.group({
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required])
+    })
   }
   ngOnInit() {
-  this.loginForm = this.formBuilder.group({username: ['', Validators.required],
-  password: ['', Validators.required]});
-  this.returnUrl =
-  this.route.snapshot.queryParams [' returnUrl '] || '/';
   }
-  get f() { return this.loginForm.controls; }
-  onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) { return;
+  valider() {
+this.jl2=''
+ this.jl= ''
+
+   if (this.registerForm.controls.email.invalid){
+     this.jl= 'veuillez renseigner une adresse mail'
+   }
+   if (this.registerForm.controls.password.invalid){
+
+     this.jl2="veuillez renseigner un mot de passe "
+   }if (this.registerForm.valid){
+     this.service.login(this.registerForm.value)
+     console.log('ok')
+
     }
-    this.loading = true;
-    this.authenticationService.login
-    (this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-              this.router.navigate(
-                  [this.returnUrl]);
-              },
-                error => {
-              this.alertService. error (error);
-              this.loading = false; });
+    console.log(this.registerForm);
+  }}
+
+

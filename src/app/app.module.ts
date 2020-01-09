@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -14,11 +16,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { PlatComponent } from './plat/plat.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
-import { ReactiveFormsModule } from "@angular/forms";
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
@@ -26,6 +28,7 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,6 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
     PlatComponent,
     IngredientsComponent,
     FooterComponent,
-    LoginComponent,
     ProfilComponent,
     RegisterComponent,
     NewIngredientComponent,
@@ -51,13 +53,17 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
     MealsComponent,
     MealEditComponent,
     MenusComponent,
-    MenuEditComponent,  
+    MenuEditComponent,
+    LoginComponent,
   ],
+
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
