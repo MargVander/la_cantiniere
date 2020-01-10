@@ -1,0 +1,21 @@
+h1{
+    color: #EA932A;
+    text-align: center;
+    font-size: 24pt;
+    margin: 20px 0;
+}
+form{
+    padding: 0 30px;
+}
+label{
+    margin-bottom: 0;
+    color: #6F6F6F;
+}
+.btn{
+    background-color: #EA932A;
+    color: white;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+}
