@@ -20,12 +20,13 @@ export class MenuSemaineComponent implements OnInit {
   modalOptions:NgbModalOptions;
   private souscription: Subscription;
   public menus: any;
-
+  selectedMenu: any;
+  selectedMenuMeal: any;
 
     menuForm = this.formBuilder.group({
     choixPlat: ['', Validators.required],
     platFormuleChoix: ['', Validators.required],
-    quantiteRepas: [  '', Validators.required]
+    quantiteRepas: [  '1', Validators.required]
     });
 
   constructor( private menuService: MenuService, private modalService: NgbModal, private formBuilder : FormBuilder) {
@@ -38,7 +39,17 @@ export class MenuSemaineComponent implements OnInit {
     }
    }
 
-  openLg(content) {
+  openLg(content, id) {
+    this.souscription = this.menuService.getMenu(id)
+    .subscribe(
+      resp => {
+        this.selectedMenu = resp;
+        console.log(this.selectedMenu);
+    console.log(this.selectedMenu.meals);
+      this.selectMenuMeal = this.selectedMenu.meals;
+      }
+    )    
+    
     this.modalService.open(content, this.modalOptions).result.then((result) => { //ouvre une fenetre modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
