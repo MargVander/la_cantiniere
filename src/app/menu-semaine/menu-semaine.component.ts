@@ -46,7 +46,6 @@ export class MenuSemaineComponent implements OnInit {
         this.selectedMenu = resp;
         console.log(this.selectedMenu);
     console.log(this.selectedMenu.meals);
-      this.selectMenuMeal = this.selectedMenu.meals;
       }
     )    
     
