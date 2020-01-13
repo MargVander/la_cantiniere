@@ -1,8 +1,15 @@
 <form (ngSubmit)="valider()" [formGroup]='registerForm'>
+    <p>adresse Email</p>
     <input type="text" formControlName="email">
+    
+    <p>mot de passe</p>
     <input type="password" formControlName="password">
    <div *ngIf="jl">{{jl}}</div>
     <div *ngIf="jl2">{{jl2}}</div>
-
+    <br>
+        <a href="src/app/register/register.component.html">mot de passe oublier</a>
+    <br>
     <button type='submit'> valider </button>
+
+
 </form>

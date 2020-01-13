@@ -1,0 +1,91 @@
+<div class="container">
+    <h1>Édition du profil</h1>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+        <div class="form-group">
+            <label for="name">Prénom</label>
+            <input class="form-control" type="text" formControlName="firstname" required>
+
+            <div class="red" *ngIf="name">
+                {{ name }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="surname">Nom</label>
+            <input class="form-control" type="text" formControlName="name" required>
+
+            <div class="red" *ngIf="surname">
+                {{ surname }}
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="email">Adresse mail</label>
+            <input class="form-control" type="email" formControlName="email" required>
+
+            <div class="red" *ngIf="email">
+                {{ email }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="phone">Numéro de Téléphone</label>
+            <input class="form-control" type="tel" formControlName="phone" required>
+
+            <div class="red" *ngIf="phone">
+                {{ phone }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address"> Adresse</label>
+            <input class="form-control" type="text" formControlName="address">
+
+            <div class="red" *ngIf="address">
+                {{ address }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="postalCode"> Code postale</label>
+            <input class="form-control" type="number" formControlName="postalCode">
+
+            <div class="red" *ngIf="postalCode">
+                {{ postalCode }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="town"> Ville</label>
+            <input class="form-control" type="text" formControlName="town">
+
+            <div class="red" *ngIf="town">
+                {{ town }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image64"> Avatar</label>
+            <input class="form-control" type="url" formControlName="image">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input class="form-control" type="password" formControlName="password" name="password" required>
+
+            <div class="red" *ngIf="password">
+                {{ password }}
+            </div>
+        </div>
+
+
+        <div class="center">
+
+            <button type="submit" class="btn" [disabled]="!userForm.valid">Valider</button>
+        </div>
+    </form>
+</div>

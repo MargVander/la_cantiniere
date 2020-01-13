@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,7 @@ import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { LoginComponent } from './login/login.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { LoginComponent } from './login/login.component';
     MenusComponent,
     MenuEditComponent,
     LoginComponent,
+    UserEditComponent,
   ],
 
   imports: [
@@ -63,7 +67,10 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    FormsModule,
+    NgbModule,
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

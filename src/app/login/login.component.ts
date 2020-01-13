@@ -32,7 +32,11 @@ this.jl2=''
      this.jl2="veuillez renseigner un mot de passe "
    }if (this.registerForm.valid){
      this.service.login(this.registerForm.value)
-     console.log('ok')
+     
+     console.log('yes cool')
+     if(this.registerForm.value==true){
+       return "/";
+     }
 
     }
     console.log(this.registerForm);
