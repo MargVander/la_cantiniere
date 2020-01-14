@@ -20,12 +20,15 @@ export class CommandesComponent implements OnInit {
 
   ngOnInit() {
     this.day = moment().day();
+    console.log(this.day);
+    
+    
     this.status = 0
-    this.getOrdersByDay(moment().day(this.day).format('YYYY-MM-DD'))
+    this.getOrdersByDay(this.day)
   }
 
   getOrdersByDay(selectDay) {
-    this.day = selectDay
+    this.day = selectDay    
     this.souscription = this.orderService.getOrdersByDay(moment().day(this.day).format('YYYY-MM-DD'), moment().day(this.day).add(1, 'days').format('YYYY-MM-DD'), this.status)
     .subscribe(
       resp => {

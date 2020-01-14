@@ -1,0 +1,15 @@
+.container{
+    margin-top: 20px;
+}
+table{
+    width: 100%;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+button{
+    border: none;
+    background: none;
+    color: rgb(206, 1, 1);
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
