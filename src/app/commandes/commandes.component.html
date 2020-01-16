@@ -1,1 +1,40 @@
-<p>commandes works!</p>
+<div class="container">
+    <a class="display-order" *ngIf="status===0" [routerLink]="" (click)="changeStatus(1)">Afficher les commandes emportées.</a>
+    <a class="display-order" *ngIf="status===1"  [routerLink]="" (click)="changeStatus(0)">Afficher les commandes non emportées.</a>
+    <div class="center">
+    <div class="days">
+            <a class="wkday" [routerLink]="" (click)="getOrdersByDay(1)">Lundi</a>
+            <a class="wkday" [routerLink]="" (click)="getOrdersByDay(2)">Mardi</a>
+            <a class="wkday" [routerLink]="" (click)="getOrdersByDay(3)">Mercredi</a>
+            <a class="wkday" [routerLink]="" (click)="getOrdersByDay(4)">Jeudi</a>
+            <a class="wkday" [routerLink]="" (click)="getOrdersByDay(5)">Vendredi</a>
+    </div>
+</div>
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Menu</th>
+                <th>Plat</th>
+                <th *ngIf="status===0">Emporté</th>
+                <th *ngIf="status===0">Annuler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{order.user.firstname}} {{order.user.name}}</td>
+                <td *ngIf="order.menu">{{order.menu.label}}</td>
+                <td *ngIf="!order.menu"></td>
+                <td><span *ngFor="let meal of order.quantityMeals">{{meal.quantity}} {{meal.meal.label}}, </span></td>
+                <td>
+                    <input *ngIf="status===0" (click)="payOrder(order.id)" type="checkbox" id="scales" name="scales">
+                </td>
+                <td>
+                    <button *ngIf="status===0" (click)="cancelOrder(order.id)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

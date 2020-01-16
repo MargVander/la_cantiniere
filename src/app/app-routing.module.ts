@@ -24,6 +24,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AccueilComponent } from './accueil/accueil.component';
 
+import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
+import { OrderComponent } from './order/order.component';
 
 
 const routes: Routes = [
@@ -50,6 +52,9 @@ const routes: Routes = [
   { path: 'profil/:id', component: ProfilComponent },
   { path: 'profiledit/:id', component: UserEditComponent },
   { path: '', component: AccueilComponent },
+  { path: 'constraintedit', component: ConstraintEditComponent },
+  { path: 'mes-commandes/:id', component: OrderComponent },
+
 ];
 
 @NgModule({

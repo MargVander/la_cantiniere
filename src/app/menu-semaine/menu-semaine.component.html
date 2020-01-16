@@ -31,22 +31,33 @@
         <div class="modal-body">
             <!-- debut form -->
 
-            <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-3">
-                        <!-- Groupe boutons radios - plat 1 -->
-
-                        <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
-                            <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
-                                name="choixPlat">
-                            <label class="form-check-label" for="boutonCheckPlat">{{meal.label}}</label>
-                        </div>
-                        <!-- Group  boutons radios - plat 2 -->
-                        <!-- <div class="form-check mt-5">
-                            <input value="plat_2" formControlName="choixPlat" type="radio" class="form-check-input " id="boutonCheckPlat2"
-                                name="choixPlat">
-                            <label class="form-check-label " for="boutonCheckPlat2">Plat 2</label>
-                        </div> -->
+    <!-- corp modal -->
+    <div class="modal-body">
+        <!-- debut form -->
+        
+        <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-3" >
+                    <!-- Groupe boutons radios - plat 1 -->
+                    
+                    <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
+                        <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
+                            name="choixPlat">
+              <label  class="form-check-label"  for="boutonCheckPlat">{{meal.label}}</label>
+                    </div>
+                    <!-- Group  boutons radios - plat 2 -->
+                   <!-- <div class="form-check mt-5">
+                        <input value="plat_2" formControlName="choixPlat" type="radio" class="form-check-input " id="boutonCheckPlat2"
+                            name="choixPlat">
+                        <label class="form-check-label " for="boutonCheckPlat2">Plat 2</label>
+                    </div> -->
+                </div>
+                <div class="col-3 mt-4">
+                    <!-- Groupe boutons radios - plat solo -->
+                    <div class="form-check">
+                        <input value="plat_seul" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-1"
+                            name="platFormuleChoix">
+                        <label class="form-check-label" for="platFormule-1">Plat seul</label>
                     </div>
                     <div class="col-3 mt-4">
                         <!-- Groupe boutons radios - plat solo -->

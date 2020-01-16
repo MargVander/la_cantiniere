@@ -42,13 +42,14 @@ export class MenuSemaineComponent implements OnInit {
 
   openLg(content, id) {
     this.souscription = this.menuService.getMenu(id)
-      .subscribe(
-        resp => {
-          this.selectedMenu = resp;
-          console.log(this.selectedMenu);
-          console.log(this.selectedMenu.meals);
-        }
-      )
+    .subscribe(
+      resp => {
+        this.selectedMenu = resp;
+        console.log(this.selectedMenu);
+    console.log(this.selectedMenu.meals);
+      }
+    )    
+    
     this.modalService.open(content, this.modalOptions).result.then((result) => { //ouvre une fenetre modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
