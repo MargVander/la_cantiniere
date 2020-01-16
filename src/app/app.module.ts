@@ -20,7 +20,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
@@ -32,6 +32,10 @@ import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { LoginComponent } from './login/login.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserService } from './services/user/user.service';
+import{TokenInterceptorService}from './token-interceptor.service';
+import { from } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +76,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, 
+  useClass: TokenInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

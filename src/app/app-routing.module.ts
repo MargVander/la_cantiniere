@@ -50,6 +50,8 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'profil/:id', component: ProfilComponent },
   { path: 'profiledit/:id', component: UserEditComponent },
+  {path : '', component : LoginComponent}
+
 ];
 
 @NgModule({

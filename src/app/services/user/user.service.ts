@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { error } from 'util';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,12 @@ export class UserService {
     },error=>{
       console.log(error)
     })}
+    loggedIn(){
+      return !!localStorage.getItem('token')
+    }
+    getToken(){
+      return localStorage.getItem('token')
+    }
 
     getUser(id) {
       var reqHeader = new HttpHeaders({

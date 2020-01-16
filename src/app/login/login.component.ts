@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs'
+
 import { UserService } from '../services/user/user.service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,14 +11,19 @@ import { UserService } from '../services/user/user.service';
 })
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
+
   jl: string;
   jl2: string;
+  
   constructor(fb: FormBuilder, private service:UserService ) {
     this.registerForm = fb.group({
+      
       email: new FormControl('',[Validators.required, Validators.email]),
       password: new FormControl('',[Validators.required])
+    
     })
   }
+
   ngOnInit() {
   }
   valider() {
@@ -31,15 +37,15 @@ this.jl2=''
 
      this.jl2="veuillez renseigner un mot de passe "
    }if (this.registerForm.valid){
-     this.service.login(this.registerForm.value)
-     
-     console.log('yes cool')
-     if(this.registerForm.value==true){
-       return "/";
-     }
-
+     this.service.login(this.registerForm.value) 
     }
-    console.log(this.registerForm);
-  }}
+    if (this.registerForm.valid==true) {
+      return 'ok'
+      
+    }
+  }
+ 
+}
 
-
+  
+   
