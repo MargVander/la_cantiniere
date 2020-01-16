@@ -37,7 +37,7 @@
                 <div class="col-3" >
                     <!-- Groupe boutons radios - plat 1 -->
                     
-                    <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals" *ngIf="expression">
+                    <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
                         <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
                             name="choixPlat">
               <label  class="form-check-label"  for="boutonCheckPlat">{{meal.label}}</label>

@@ -22,7 +22,8 @@ import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { ProfilComponent } from './profil/profil.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-
+import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
+import { OrderComponent } from './order/order.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,9 @@ const routes: Routes = [
   { path: 'menuedit/:id', component: MenuEditComponent },
   { path: 'profil/:id', component: ProfilComponent },
   { path: 'profiledit/:id', component: UserEditComponent },
+  { path: 'constraintedit', component: ConstraintEditComponent },
+  { path: 'mes-commandes/:id', component: OrderComponent },
+
 ];
 
 @NgModule({
