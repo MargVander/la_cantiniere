@@ -1,28 +1,29 @@
-#header{
-    height: 45px;
-    background-color: #A6C36B;
-    display: flex;
-    justify-content: space-between;
-    line-height: 45px;
-    padding: 0 10px;
-}
 a{
     color: white;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
-img{
-    height: 30px;
+img {
+    height: 40px;
+    padding: 0 0 0 0;
+    margin: 0 1vw 0 0;
 }
-.logo{
+
+
+.logo {
     font-size: 22pt;
+    font-weight: 400;
     text-decoration: none;
+}
 
+.myText {
+    font-size: 14pt;
 }
-.logo img{
+
+/* .logo img{
     margin-right: 10px;
-}
-#subheader{
+} */
+/* #subheader{
     background-color: #EDEAE5;
     padding: 0 20px;
 }
@@ -33,4 +34,12 @@ img{
 }
 #subheader a:hover{
     color: #EA932A;
-}
+} */
+/* #header{
+    height: 5vh;
+    background-color: #A6C36B;
+    display: flex;
+    justify-content: space-between;
+    line-height: 45px;
+    padding: 0 10px;
+} */
