@@ -1,10 +1,10 @@
-<div class="fondAccueil ">
-    <div class="helloBlock">
+<div class="fondAccueil container-fluid">
+    <div class="">
         <div class="title">Bienvenue sur La Cantinière</div>
         <div class="subTitle">Choisissez, commandez et régalez-vous !</div>
         <div class="helloButtons">
-            <div class="myButton hvr-sweep-to-top">Nos menus</div>
-            <div class="myButton hvr-sweep-to-top">Connectez-vous</div>
+            <div class="myButton hvr-sweep-to-top" [routerLink]="['menu-semaine']">Nos menus</div>
+            <div class="myButton hvr-sweep-to-top" [routerLink]="['login']">Connectez-vous</div>
         </div>
     </div>
 </div>
