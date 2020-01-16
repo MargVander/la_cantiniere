@@ -30,6 +30,9 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
     MealEditComponent,
     MenusComponent,
     MenuEditComponent,
+    UserEditComponent,
+    ConstraintEditComponent,
+    OrderComponent,
   ],
 
   imports: [

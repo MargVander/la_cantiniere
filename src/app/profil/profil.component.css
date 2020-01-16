@@ -1,0 +1,30 @@
+h1{
+    color: #EA932A;
+    font-size: 24pt;
+    margin: 20px 0;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+}
+.twoparts{
+    display: flex;
+}
+.icon{
+    height: 20px;
+    margin-bottom: 10px;
+}
+.second{
+    margin-left: 20px;
+}
+.profilepic{
+    height: 180px;
+}
+.btn{
+    background-color: #EA932A;
+    color: white;
+    margin-top: 21px;
+}
+.cantiniere{
+    margin-top: 28px;
+}
