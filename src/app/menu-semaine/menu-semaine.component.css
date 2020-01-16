@@ -17,7 +17,7 @@ li{
     height: 50px;
     position: absolute;
     bottom: 10px;
-    right: 35%;
+    left: 60%;
 }
 .card-body{
     margin-bottom: 55px;
@@ -27,5 +27,13 @@ a{
 }
 .price{
     color: black;
+}
+.ajout{
+    height: 50px;
+    width: 50px;
+    bottom: 10px;
+    border-radius: 25px;
+    position: absolute;
+    background-color: black;
 }
 

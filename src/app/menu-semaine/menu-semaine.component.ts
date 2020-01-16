@@ -1,6 +1,6 @@
+import { Menu } from './../models/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
-
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { MenuService } from '../services/menu/menu.service'
@@ -26,7 +26,7 @@ export class MenuSemaineComponent implements OnInit {
     menuForm = this.formBuilder.group({
     choixPlat: ['', Validators.required],
     platFormuleChoix: ['', Validators.required],
-    quantiteRepas: [  '1', Validators.required]
+    quantiteRepas: [  '1', Validators.required],
     });
 
   constructor( private menuService: MenuService, private modalService: NgbModal, private formBuilder : FormBuilder) {
@@ -46,7 +46,6 @@ export class MenuSemaineComponent implements OnInit {
         this.selectedMenu = resp;
         console.log(this.selectedMenu);
     console.log(this.selectedMenu.meals);
-      this.selectMenuMeal = this.selectedMenu.meals;
       }
     )    
     
@@ -77,6 +76,7 @@ export class MenuSemaineComponent implements OnInit {
 
   onSubmit() {
     console.log('Form submitted !', this.menuForm.value);
+    
     this.menuForm.reset();
   }
 
@@ -95,4 +95,17 @@ export class MenuSemaineComponent implements OnInit {
     )    
   };
 
+  addToPanier(menu) {
+    let panier = [];
+    if (localStorage.getItem("panier")) {
+      panier = JSON.parse(localStorage.getItem("panier"));
+    }
+    panier.push({ quantitePlat: this.quantitePlat, menu });
+    localStorage.setItem("panier", JSON.stringify(panier));
+    console.log("panier", panier);
+    console.log("menu :", menu);
+    console.log("quantite :", this.quantitePlat);
+    localStorage.setItem("panier", JSON.stringify(panier));
+    console.log("panier", JSON.stringify(panier))
+  }
 }
