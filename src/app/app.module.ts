@@ -29,6 +29,8 @@ import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { UsersComponent } from './users/users.component';
     MenusComponent,
     MenuEditComponent,
     UsersComponent,
+    UserComponent,
+    UserEditComponent,
   ],
 
   imports: [

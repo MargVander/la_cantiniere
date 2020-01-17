@@ -1,1 +1,32 @@
-<p>users works!</p>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Solde</th>
+                <th> Activation </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td> {{user.firstname}} </td>
+                <td>{{user.wallet}}</td>
+
+                <td *ngIf="!user.status">
+                    <input type="button" value="désactiver" (click)="setDesactivation(user.id)">
+                </td>
+
+                <td *ngIf="user.status">
+                    <input type="button" value="activer" (click)="setActivation(user.id)">
+                </td>
+
+                <td>
+                    <a [routerLink]="['/user', user.id]">Editer</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
