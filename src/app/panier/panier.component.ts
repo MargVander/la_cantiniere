@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../services/order/order.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-panier',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierComponent implements OnInit {
 
-  constructor() { }
+  private souscription: Subscription;
+  public panier: any;
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
   }
+
+  // getPanier() {
+  //   this.souscription = this.orderService.getPanier()
+  //   .subscribe(
+  //     resp => {
+  //       this.panier = resp;
+  //       console.log(this.panier);
+  //     }
+  //   )
+  // }
 
 }
