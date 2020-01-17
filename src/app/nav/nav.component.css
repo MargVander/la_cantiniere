@@ -1,36 +1,8 @@
-#header{
-    height: 45px;
-    background-color: #A6C36B;
-    display: flex;
-    justify-content: space-between;
-    line-height: 45px;
-    padding: 0 10px;
-}
 a{
     color: white;
-    margin-right: 10px;
-}
-
-img{
-    height: 30px;
-}
-.logo{
-    font-size: 22pt;
-    text-decoration: none;
-
-}
-.logo img{
-    margin-right: 10px;
-}
-#subheader{
-    background-color: #EDEAE5;
-    padding: 0 20px;
-}
-#subheader a{
-    color:#6F6F6F;
     margin-right: 20px;
-    text-decoration: none;
 }
-#subheader a:hover{
-    color: #EA932A;
+
+.myText {
+    font-size: 14pt;
 }

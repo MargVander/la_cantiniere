@@ -1,7 +1,6 @@
-footer {
-    position: fixed;
-    background-color: #EDEAE5;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+.footer {
+    height: 40px;
+    background-color: #a2c9d4;
+    color: white;
+    align-items: center;
 }
