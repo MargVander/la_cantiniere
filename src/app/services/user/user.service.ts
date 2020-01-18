@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http'
 import { error } from 'util';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import  jwt_decode from 'jwt-decode'
+import { Observable } from 'rxjs';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { TagContentType } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  router: any;
+  returnUrl: any;
 
   constructor(private http: HttpClient) { }
 
@@ -20,17 +26,20 @@ export class UserService {
     console.log(data)
     this.http.put('http://localhost:8080/lunchtime/user/register/', data)
       .subscribe(data => {
-        console.log(data);
+      
       }, error => {
         console.log(error);
       })
   }
-  login(id) {
+  login(id:number) {
+ 
     this.http.post('http://localhost:8080/lunchtime/login?', id )
     .subscribe(data=>{
-     console.log(data); 
+      this.router.navigate([this.returnUrl]);
+      console.log(this.returnUrl)
+
     },error=>{
-      console.log(error)
+
     })}
     loggedIn(){
       return !!localStorage.getItem('token')
@@ -47,7 +56,6 @@ export class UserService {
       return this.http.get(`http://localhost:8080/lunchtime/user/find/${id}`, { headers: reqHeader })
   }
   
-
   editUser(id, data: any) {
     var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',

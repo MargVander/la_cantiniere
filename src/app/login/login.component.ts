@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-
+import { HttpClient, HttpHeaders, HTTP_INTERCEPTORS, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http'
+import { Observable, observable } from 'rxjs'
 import { UserService } from '../services/user/user.service';
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,24 +10,26 @@ import { UserService } from '../services/user/user.service';
 })
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
-
   jl: string;
   jl2: string;
-  
-  constructor(fb: FormBuilder, private service:UserService ) {
+  userConnected: UserService;
+
+  constructor(fb: FormBuilder, 
+    private service:UserService ){
+
     this.registerForm = fb.group({
-      
-      email: new FormControl('',[Validators.required, Validators.email]),
+      email: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required])
-    
     })
   }
-
   ngOnInit() {
   }
   valider() {
 this.jl2=''
  this.jl= ''
+ const formValue = this.registerForm.value
+ const email: string= formValue.value
+ const password: string= formValue.value 
 
    if (this.registerForm.controls.email.invalid){
      this.jl= 'veuillez renseigner une adresse mail'
@@ -37,15 +38,6 @@ this.jl2=''
 
      this.jl2="veuillez renseigner un mot de passe "
    }if (this.registerForm.valid){
-     this.service.login(this.registerForm.value) 
-    }
-    if (this.registerForm.valid==true) {
-      return 'ok'
-      
-    }
-  }
- 
-}
-
-  
-   
+     this.service.login(this.registerForm.value)
+    } 
+  }}

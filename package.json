@@ -25,6 +25,7 @@
     "interceptor": "^0.1.4",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
+    "material": "^0.4.3",
     "moment": "^2.24.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
