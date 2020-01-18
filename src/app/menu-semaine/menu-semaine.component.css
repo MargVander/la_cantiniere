@@ -34,6 +34,7 @@ a{
     bottom: 10px;
     border-radius: 25px;
     position: absolute;
-    background-color: black;
+    transform: rotate(45deg);
+    border: none;
 }
 

@@ -9,29 +9,41 @@
                   <p *ngFor="let meal of menu.meals">
                     <a href="#">{{meal.label}}</a>
                   </p>
+                  <button class="ajout" src="../../assets/img/plus-48.svg" (click)="addToPanier(menu)"><i class="fas fa-times"></i></button>
                   <a >
                   <img class="cart" src="../../assets/img/shopping-cart.svg" alt="" (click)="openLg(mymodal, menu.id)">
                 </a>
-                <button class="ajout" src="../../assets/img/plus-48.svg" (click)="addToPanier(menu)"><i class="fas fa-times"></i></button>
             </div>
           </div>
       </div>
     </div>
-    <!-- fin titre modal -->
-
-    <!-- corp modal -->
-    <div class="modal-body">
-        <!-- debut form -->
-        
-        <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="col-3" >
-                    <!-- Groupe boutons radios - plat 1 -->
-                    
-                    <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
-                        <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
-                            name="choixPlat">
-              <label  class="form-check-label"  for="boutonCheckPlat">{{meal.label}}</label>
+    
+    <!-- Formulaire Modal -->
+    <ng-template #mymodal let-modal>
+        <!-- titre modal -->
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{selectedMenu.label}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- fin titre modal -->
+    
+        <!-- corp modal -->
+        <div class="modal-body">
+            <!-- debut form -->
+            
+            <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-3" >
+                        <!-- Groupe boutons radios - plat 1 -->
+                        
+                        <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
+                            <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
+                                name="choixPlat">
+                  <label  class="form-check-label"  for="boutonCheckPlat">{{meal.label}}</label>
+                        </div>
+                        
                     </div>
                     <div class="col-3 mt-4">
                         <!-- Groupe boutons radios - plat solo -->
@@ -56,7 +68,11 @@
                         
                     </div>
                     <div class="col-3 mt-4">
-                        <button type="submit" class="btn btn-success" >Ajouter au panier</button>
+                        <input formControlName="prix" value="{{selectedMenu.priceDF}}" placeholder="{{selectedMenu.priceDF}}€">
+        
+                    </div>
+                    <div class="col-3 mt-4">
+                        <button type="submit" class="btn btn-success" (click)="closeValiderAjoutPanier(menu, quantitePlat)">Ajouter au panier</button>
                     </div>
                 </div>
                 

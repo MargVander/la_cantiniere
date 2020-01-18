@@ -27,6 +27,7 @@ export class MenuSemaineComponent implements OnInit {
     choixPlat: ['', Validators.required],
     platFormuleChoix: ['', Validators.required],
     quantiteRepas: [  '1', Validators.required],
+    prix: ['']
     });
 
   constructor( private menuService: MenuService, private modalService: NgbModal, private formBuilder : FormBuilder) {
@@ -74,11 +75,11 @@ export class MenuSemaineComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+ /* onSubmit() {
     console.log('Form submitted !', this.menuForm.value);
     
     this.menuForm.reset();
-  }
+  } */
 
   
   ngOnInit() {
@@ -107,5 +108,21 @@ export class MenuSemaineComponent implements OnInit {
     console.log("quantite :", this.quantitePlat);
     localStorage.setItem("panier", JSON.stringify(panier));
     console.log("panier", JSON.stringify(panier))
+  }
+
+  closeValiderAjoutPanier(menuForm, quantitePlat) {
+    let panier = [];
+    if (localStorage.getItem("panier")) {
+      panier = JSON.parse(localStorage.getItem("panier"));
+    }
+    panier.push({ quantitePlat, menuForm });
+    localStorage.setItem("panier", JSON.stringify(panier));
+        console.log('Form submitted !', this.menuForm.value);
+
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 }

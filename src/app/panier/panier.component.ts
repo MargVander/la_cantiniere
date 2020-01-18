@@ -64,7 +64,7 @@ export class PanierComponent implements OnInit {
     }
   }
 
-  creerLaCommande() {
+  /* creerLaCommande() {
     const user = this.userConnected;
     const menu = this.menuPanier;
 
@@ -97,5 +97,5 @@ export class PanierComponent implements OnInit {
         );
       }
     
-  }
+  } */
 }
