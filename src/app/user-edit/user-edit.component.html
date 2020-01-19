@@ -87,5 +87,7 @@
 
             <button type="submit" class="btn" [disabled]="!userForm.valid">Valider</button>
         </div>
+
+        <a (click)="deleteAccount(user.id)" class="text-danger">Supprimer mon compte</a>
     </form>
 </div>

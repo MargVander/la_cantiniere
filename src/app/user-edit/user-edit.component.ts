@@ -58,4 +58,16 @@ export class UserEditComponent implements OnInit {
 
   }
 
+  deleteAccount(id){
+    this.user.firstname = "xxxxxx"
+    this.user.name = "xxxxxx"
+    this.user.phone = 1234567890
+    this.user.address = "xxxxxxxxxx"
+    this.user.town = "xxxxxxxxxx"
+    this.user.password = "xxxxxx"
+    this.userService.editUser(id, this.user)
+    this.userService.deleteUser(id)
+    
+  }
+
 }
