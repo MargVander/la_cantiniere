@@ -110,8 +110,11 @@ export class MenuSemaineComponent implements OnInit {
     console.log("panier", JSON.stringify(panier))
   }
 
-  closeValiderAjoutPanier(menuForm, quantitePlat) {
+  closeValiderAjoutPanier() {
     let panier = [];
+    // console.log('Form submitted !', this.menuForm.value.quantiteRepas);
+    let quantitePlat = this.menuForm.value.quantiteRepas;
+    let menuForm = this.menuForm.value;
     if (localStorage.getItem("panier")) {
       panier = JSON.parse(localStorage.getItem("panier"));
     }
