@@ -5,6 +5,7 @@ import { Menu } from './../models/menu';
 import { OrderService } from './../services/order/order.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-panier',
