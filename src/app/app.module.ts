@@ -36,6 +36,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { OrderComponent } from './order/order.component';
     AccueilComponent,
     ConstraintEditComponent,
     OrderComponent,
+    LoginComponent,
   ],
 
   imports: [
