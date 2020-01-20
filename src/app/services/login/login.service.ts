@@ -49,7 +49,7 @@ export class LoginService {
  */
   login(user: any): Observable<any> {
 
-    const url = 'http://127.0.0.1:8000/api/login_check';
+    const url = 'http://localhost:8080/lunchtime/login';
     return this.http.post<any>(url, user, { responseType: 'json' })
       .pipe(
 
@@ -61,6 +61,7 @@ export class LoginService {
              * on passe loggedIn à true
              */
             localStorage.setItem('jwt', data.token);
+            console.log(data);
             this.loggedIn.next(true);
 
           }
@@ -71,6 +72,9 @@ export class LoginService {
 
 
   }
+
+
+
   /**
    * Deconnexion
    */
@@ -96,21 +100,6 @@ export class LoginService {
     return throwError(errorMessage);
 
   }
-
-  /**
-   *
-   * @param error
-   * traitement des erreurs register
-   */
-  handleRegisterError(error) {
-
-    let errorMessage = '';
-
-    errorMessage = error.error.violations[0].title;
-
-    return throwError(errorMessage);
-  }
-
 
 }
 

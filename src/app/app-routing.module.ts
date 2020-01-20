@@ -28,6 +28,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -37,9 +38,11 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: '', component: AccueilComponent },
-    /**
-   * ces pages sont protégées par authguard
-   */
+  { path: 'login', component: LoginComponent },
+
+  /**
+ * ces pages sont protégées par authguard
+ */
   { path: 'constraintedit', component: ConstraintEditComponent, canActivate: [AuthGuard] },
   { path: 'mes-commandes/:id', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'cagnotte', component: CagnotteComponent, canActivate: [AuthGuard] },

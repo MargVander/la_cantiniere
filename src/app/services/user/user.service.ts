@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, tap, catchError } from 'rxjs/operators';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { HeaderService } from '../header/header.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +14,7 @@ export class UserService {
     'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjEwMC4wMCwicG9zdGFsQ29kZSI6Ijc1MDAwIiwicmVnaXN0cmF0aW9uRGF0ZSI6MTU1MTUzNjI0ODAwMCwiZW1haWwiOiJ0b3RvQGdtYWlsLmNvbSIsImlzTHVuY2hMYWR5Ijp0cnVlLCJuYW1lIjoiRHVyYW50IiwiZmlyc3RuYW1lIjoiQWxiZXJ0IiwicGhvbmUiOiIwMTQ4NTY3ODk3IiwidG93biI6IlBhcmlzIiwic2V4IjowLCJzdGF0dXMiOjB9LCJyb2xlcyI6WyJST0xFX0xVTkNITEFEWSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRvdG9AZ21haWwuY29tIiwiZXhwIjoxNTc5MjYyNTk3fQ.gCCzty1hlkORf_KudKjpHpg83LKlrQQWsPlpjAWhTY6G6Q1Kq--4bStK9Mz5KPqCj7AU33vtEUxS-oq9LEj_vw'
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private headerService: HeaderService) { }
 
   setInscription(data: any) {
 
