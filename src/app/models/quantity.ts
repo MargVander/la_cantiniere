@@ -1,5 +1,5 @@
 import { Meal } from './meal';
-
+ 
 export class Quantity {
     id?: number;
     quantity?: number;

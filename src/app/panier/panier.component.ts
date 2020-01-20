@@ -1,3 +1,4 @@
+import { Meal } from './../models/meal';
 import { User } from './../models/user';
 import { Order } from './../models/order';
 import { Menu } from './../models/menu';
@@ -25,6 +26,7 @@ export class PanierComponent implements OnInit {
   order: Order;
    
   ngOnInit() {
+    
     this.recupererPanier();
     if (this.menuPanier != null) {
       this.calculerTotalPanier();
@@ -49,18 +51,16 @@ export class PanierComponent implements OnInit {
     this.router.navigate(['/panier']);
   }
 
-  // Pour calculer le prix total du panier
+  //  calcul le prix total du panier
   calculerTotalPanier() {
     if (localStorage.getItem('panier') != null) {
       this.local = localStorage.getItem('panier');
       this.listArticles = JSON.parse(this.local);
       this.prixTotalPanier = 0;
-      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.listArticles.length; i++) {
         this.prixTotalPanier =
           this.prixTotalPanier +
-          this.listArticles[i].menu.priceDF * this.listArticles[i].quantitePlat;
-      }
+          this.listArticles[i].menu.priceDF * this.listArticles[i].quantitePlat;      }
     }
   }
 

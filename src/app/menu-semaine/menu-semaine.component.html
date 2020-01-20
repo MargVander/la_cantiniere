@@ -1,91 +1,92 @@
 <div class="container">
-    <div>
-      <div class="d-flex flex-wrap justify-content-around">
-        <div class="card mb-4" style="width: 170px;" *ngFor="let menu of menus">
-            <div class="card-body">
-              <h5 class="card-title" >{{menu.label}}</h5>
-              <h6 class="card-title price">{{menu.priceDF}}€</h6>
-              <p class="card-text">{{menu.description}}</p>
-                  <p *ngFor="let meal of menu.meals">
-                    <a href="#">{{meal.label}}</a>
-                  </p>
-                  <button class="ajout" src="../../assets/img/plus-48.svg" (click)="addToPanier(menu)"><i class="fas fa-times"></i></button>
-                  <a >
-                  <img class="cart" src="../../assets/img/shopping-cart.svg" alt="" (click)="openLg(mymodal, menu.id)">
-                </a>
-            </div>
+  <div>
+    <div class="d-flex flex-wrap justify-content-around">
+      <div class="card mb-4" style="width: 170px;" *ngFor="let menu of menu">
+          <div class="card-body">
+            <h5 class="card-title" >{{menu.label}}</h5>
+            <h6 class="card-title price">{{menu.priceDF}}€</h6>
+            <p class="card-text">{{menu.description}}</p>
+                <p *ngFor="let meal of menu.meals">
+                  <a href="#">{{meal.label}}</a>
+                </p>
+                <button class="ajout" src="../../assets/img/plus-48.svg" (click)="addToPanier(menu)"><i class="fas fa-times"></i></button>
+                <a >
+                <img class="cart" src="../../assets/img/shopping-cart.svg" alt="" (click)="openLg(mymodal, menu.id)">
+              </a>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Formulaire Modal -->
+  <ng-template #mymodal let-modal>
+      <!-- titre modal -->
+      <div class="modal-header">
+          <h4 class="modal-title" name="label" id="modal-basic-title">{{selectedMenu.label}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <!-- fin titre modal -->
+  
+      <!-- corp modal -->
+      <div class="modal-body">
+          <!-- debut form -->
+          
+          <form [formGroup]="menuForm" >
+              <div class="row">
+                  <div class="col-3" >
+                      <!-- Groupe boutons radios - plat 1 -->
+                      
+                      <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals; let i = index">
+                          <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
+                              name="choixPlat">
+                <label  class="form-check-label"  for="boutonCheckPlat"><i>{{meal.label}}</i></label>
+                      </div>
+                      
+                  </div>
+
+                   <div class="col-3 mt-4"> 
+                      <!-- Groupe boutons radios - plat solo -->
+                       <div class="form-check" >
+                          <input value="{{selectedMenu.meal}}" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-1"
+                              name="platFormuleChoix">
+                          <label class="form-check-label" for="platFormule-1">Plat seul</label>
+                      </div> 
+                      <!-- Group boutons radios - formule  -->
+                      <div class="form-check" >
+                          <input value="{{selectedMenu}}" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-2"
+                              name="platFormuleChoix" checked>
+                          <label class="form-check-label" for="platFormule-2">Formule</label>
+                      </div>
+                  </div>   
+                   
+                  <div class="col-3 mt-4">
+                          <div class="input-group">
+                              <input formControlName="quantiteRepas" type="number" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
+                                  max="10">
+                          </div>
+                      
+                  </div>
+                  <div class="col-3 mt-4" style="display: none;">
+                      <input formControlName="prix" value="{{selectedMenu.priceDF}}" placeholder="{{selectedMenu.priceDF}}€">
+      
+                  </div>
+                  <div class="col-3 mt-4">
+                      <button type="button" class="btn btn-success" (click)="closeValiderAjoutPanier(menu)">Ajouter au panier</button>
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div class="col-center"></div>
+              </div>
+          </form>
+      </div>
+      <!-- fin corp modal -->
+  
+      <div class="modal-footer">
+          <div class="col text-center">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
           </div>
       </div>
-    </div>
-    
-    <!-- Formulaire Modal -->
-    <ng-template #mymodal let-modal>
-        <!-- titre modal -->
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">{{selectedMenu.label}}</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <!-- fin titre modal -->
-    
-        <!-- corp modal -->
-        <div class="modal-body">
-            <!-- debut form -->
-            
-            <form [formGroup]="menuForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-3" >
-                        <!-- Groupe boutons radios - plat 1 -->
-                        
-                        <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals">
-                            <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
-                                name="choixPlat">
-                  <label  class="form-check-label"  for="boutonCheckPlat">{{meal.label}}</label>
-                        </div>
-                        
-                    </div>
-                    <div class="col-3 mt-4">
-                        <!-- Groupe boutons radios - plat solo -->
-                        <div class="form-check">
-                            <input value="plat_seul" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-1"
-                                name="platFormuleChoix">
-                            <label class="form-check-label" for="platFormule-1">Plat seul</label>
-                        </div>
-                        <!-- Group boutons radios - formule  -->
-                        <div class="form-check">
-                            <input value="formule" formControlName="platFormuleChoix" type="radio" class="form-check-input" id="platFormule-2"
-                                name="platFormuleChoix" checked>
-                            <label class="form-check-label" for="platFormule-2">Formule</label>
-                        </div>
-                    </div>
-                     
-                    <div class="col-3 mt-4">
-                            <div class="input-group">
-                                <input formControlName="quantiteRepas" type="number" name="quant[1]" class="form-control input-number" value="{{quantitePlat}}" min="1"
-                                    max="10">
-                            </div>
-                        
-                    </div>
-                    <div class="col-3 mt-4">
-                        <input formControlName="prix" value="{{selectedMenu.priceDF}}" placeholder="{{selectedMenu.priceDF}}€">
-        
-                    </div>
-                    <div class="col-3 mt-4">
-                        <button type="submit" class="btn btn-success" (click)="closeValiderAjoutPanier(menu, quantitePlat)">Ajouter au panier</button>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-center"></div>
-                </div>
-            </form>
-        </div>
-        <!-- fin corp modal -->
-    
-        <div class="modal-footer">
-            <div class="col text-center">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
-            </div>
-        </div>
-    </ng-template>
+  </ng-template>

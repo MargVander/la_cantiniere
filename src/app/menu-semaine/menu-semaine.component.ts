@@ -1,3 +1,4 @@
+import { Meal } from 'src/app/models/meal';
 import { Menu } from './../models/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
@@ -19,7 +20,9 @@ export class MenuSemaineComponent implements OnInit {
   quantitePlat: number = 1;
   modalOptions:NgbModalOptions;
   private souscription: Subscription;
-  public menus: any;
+  public menu: Array<Menu>;
+  public description: Array<Meal>;
+  public meal: Array<Meal>;
   selectedMenu: any;
   selectedMenuMeal: any;
 
@@ -29,6 +32,7 @@ export class MenuSemaineComponent implements OnInit {
     quantiteRepas: [  '1', Validators.required],
     prix: ['']
     });
+  
 
   constructor( private menuService: MenuService, private modalService: NgbModal, private formBuilder : FormBuilder) {
 
@@ -37,7 +41,7 @@ export class MenuSemaineComponent implements OnInit {
       backdrop: 'static',
       backdropClass: 'customBackdrop',
       size: 'lg'
-    }
+    } 
    }
 
   openLg(content, id) {
@@ -75,11 +79,7 @@ export class MenuSemaineComponent implements OnInit {
     }
   }
 
- /* onSubmit() {
-    console.log('Form submitted !', this.menuForm.value);
-    
-    this.menuForm.reset();
-  } */
+
 
   
   ngOnInit() {
@@ -90,12 +90,13 @@ export class MenuSemaineComponent implements OnInit {
     this.souscription = this.menuService.getMenusByDay()
     .subscribe(
       resp => {
-        this.menus = resp;
-        console.log(this.menus);
+        this.menu = resp;
+        console.log(this.menu);
       }
     )    
   };
 
+  
   addToPanier(menu) {
     let panier = [];
     if (localStorage.getItem("panier")) {
@@ -103,26 +104,33 @@ export class MenuSemaineComponent implements OnInit {
     }
     panier.push({ quantitePlat: this.quantitePlat, menu });
     localStorage.setItem("panier", JSON.stringify(panier));
-    console.log("panier", panier);
-    console.log("menu :", menu);
-    console.log("quantite :", this.quantitePlat);
+    
     localStorage.setItem("panier", JSON.stringify(panier));
     console.log("panier", JSON.stringify(panier))
   }
 
-  closeValiderAjoutPanier(menuForm, quantitePlat) {
+  closeValiderAjoutPanier(menuForm, quantitePlat, description) {
     let panier = [];
+    this.quantitePlat = this.menuForm.value.quantiteRepas;
+    this.description = this.menuForm.value.choixPlat;
+    this.meal = this.description;
+    console.log(this.meal);
     if (localStorage.getItem("panier")) {
       panier = JSON.parse(localStorage.getItem("panier"));
     }
-    panier.push({ quantitePlat, menuForm });
+    panier.push({ meal: this.meal ,quantitePlat: this.quantitePlat, menu: this.selectedMenu });
     localStorage.setItem("panier", JSON.stringify(panier));
-        console.log('Form submitted !', this.menuForm.value);
+        console.log('Form submitted !', this.menuForm.value, 'menu :', this.menu, 'panier :', panier.values);
 
     this.closeModal();
   }
 
   closeModal() {
     this.modalService.dismissAll();
+  }
+
+  ajoutPanier(selectedMenu, menu){
+    console.log(this.selectedMenu);
+    console.log(this.selectedMenu.value);
   }
 }
