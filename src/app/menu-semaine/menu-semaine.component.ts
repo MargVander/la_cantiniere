@@ -1,3 +1,4 @@
+import { PlatService } from './../services/plat/plat.service';
 import { Meal } from 'src/app/models/meal';
 import { Menu } from './../models/menu';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,12 +23,14 @@ export class MenuSemaineComponent implements OnInit {
   private souscription: Subscription;
   public menu: Array<Menu>;
   public description: Array<Meal>;
-  public meal: Array<Meal>;
+  public meal: Array<Meal>; 
+  public label: Array<Meal>;
   selectedMenu: any;
   selectedMenuMeal: any;
 
   menuForm = this.formBuilder.group({
     choixPlat: ['', Validators.required],
+    nomPlat: ['', ],
     platFormuleChoix: ['', Validators.required],
     quantiteRepas: [  '1', Validators.required],
     prix: ['']
@@ -35,7 +38,7 @@ export class MenuSemaineComponent implements OnInit {
   
 
 
-  constructor(private menuService: MenuService, private modalService: NgbModal, private formBuilder: FormBuilder) {
+  constructor(private platService: PlatService,private menuService: MenuService, private modalService: NgbModal, private formBuilder: FormBuilder) {
     this.modalOptions = {
       backdrop: 'static',
       backdropClass: 'customBackdrop',
@@ -51,7 +54,16 @@ export class MenuSemaineComponent implements OnInit {
         console.log(this.selectedMenu);
     console.log(this.selectedMenu.meals);
       }
-    )    
+    );
+    this.souscription = this.platService.getMeal(id)
+    .subscribe(
+      resp => {
+        this.selectedMenuMeal = resp;
+        console.log(this.selectedMenuMeal);
+    console.log(this.selectedMenuMeal.meal);
+      }
+    );
+        
     
     this.modalService.open(content, this.modalOptions).result.then((result) => { //ouvre une fenetre modal
       this.closeResult = `Closed with: ${result}`;
@@ -77,9 +89,6 @@ export class MenuSemaineComponent implements OnInit {
       this.quantitePlat++;
     }
   }
-
-
-
 
   ngOnInit() {
     this.getMenusByDay();
@@ -112,8 +121,11 @@ export class MenuSemaineComponent implements OnInit {
     let panier = [];
     this.quantitePlat = this.menuForm.value.quantiteRepas;
     this.description = this.menuForm.value.choixPlat;
+    this.label = this.menuForm.value.nomPlat;
     this.meal = this.description;
     console.log(this.meal);
+    console.log(this.label);
+    console.log(this.description);
     if (localStorage.getItem("panier")) {
       panier = JSON.parse(localStorage.getItem("panier"));
     }

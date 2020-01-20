@@ -7,7 +7,7 @@
             <h6 class="card-title price">{{menu.priceDF}}€</h6>
             <p class="card-text">{{menu.description}}</p>
                 <p *ngFor="let meal of menu.meals">
-                  <a href="#">{{meal.label}}</a>
+                  <a>{{meal.label}}</a>
                 </p>
                 <button class="ajout" src="../../assets/img/plus-48.svg" (click)="addToPanier(menu)"><i class="fas fa-times"></i></button>
                 <a >
@@ -32,12 +32,10 @@
       <!-- corp modal -->
       <div class="modal-body">
           <!-- debut form -->
-          
           <form [formGroup]="menuForm" >
               <div class="row">
                   <div class="col-3" >
                       <!-- Groupe boutons radios - plat 1 -->
-                      
                       <div class="form-check mt-2" *ngFor="let meal of selectedMenu.meals; let i = index">
                           <input value="{{meal.id}}" formControlName="choixPlat" type="radio" class="form-check-input"
                               name="choixPlat">
@@ -70,7 +68,7 @@
                   </div>
                   <div class="col-3 mt-4" style="display: none;">
                       <input formControlName="prix" value="{{selectedMenu.priceDF}}" placeholder="{{selectedMenu.priceDF}}€">
-      
+
                   </div>
                   <div class="col-3 mt-4">
                       <button type="button" class="btn btn-success" (click)="closeValiderAjoutPanier(menu)">Ajouter au panier</button>

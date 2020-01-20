@@ -83,8 +83,8 @@ export class PanierComponent implements OnInit {
         };
 
         this.orderService.addOrder(this.order).subscribe(
-          response => {
-            this.order = response;
+          resp => {
+            this.order = resp; 
             
             localStorage.removeItem('panier');
             this.router.navigate(['/']);

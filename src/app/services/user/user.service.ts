@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
@@ -32,16 +34,17 @@ export class UserService {
     return this.http.get(`http://localhost:8080/lunchtime/user/find/${id}`, { headers: reqHeader })
   }
 
-  editUser(id, data: any) {
+  editUser(id, user: User): Observable<User[]> {
     var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzg2NjUzMDF9.-xGvgNjG9EPlOIGL3-z3OFgQTurwWHkrGmpm5XgnEoAYoHbOyFTb7m_BCCIbCaTZwjmLdAA2cG40sJSOptpW0Q'
     });
-    this.http.patch(`http://localhost:8080/lunchtime/user/update/${id}`, data, { headers: reqHeader })
-      .subscribe(data => {
-        console.log(data);
+    this.http.patch<User[]>(`http://localhost:8080/lunchtime/user/update/${id}`, user, { headers: reqHeader })
+      .subscribe(user => {
+        console.log(user);
       }, error => {
-        console.log(error);
+        console.log(error); 
       })
+      return;
   }
 }
