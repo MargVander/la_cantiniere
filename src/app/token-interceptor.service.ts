@@ -4,8 +4,6 @@ import{UserService}from './services/user/user.service';
 import { HttpRequest, HttpHandler, HttpEvent,  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { from } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
