@@ -45,9 +45,13 @@ export class RegisterComponent implements OnInit {
 
   inscription() {
 
+
     if (this.registerForm.valid) {
+
       console.log("ok")
       this.userService.setInscription(this.registerForm.value)
+      this.registerForm.reset()
+
     }
 
     else {

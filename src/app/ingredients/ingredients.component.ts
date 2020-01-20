@@ -12,26 +12,27 @@ export class IngredientsComponent implements OnInit {
   private souscription: Subscription;
 
   constructor(private menuService: MenuService) {
-    
+
   }
 
   ngOnInit() {
     this.getIngredients()
   }
 
-  getIngredients(){
+  getIngredients() {
     this.souscription = this.menuService.getIngredients()
-    .subscribe(
-      resp => {
-        this.ingredients = resp;
-        console.log(this.ingredients);
-        
-      }
-    )    
+      .subscribe(
+        resp => {
+          this.ingredients = resp;
+          console.log(this.ingredients);
+
+        }
+      )
   }
 
   deleteIngredient(id) {
     this.menuService.deleteIngredient(id)
+    this.getIngredients()
   }
 
 }
