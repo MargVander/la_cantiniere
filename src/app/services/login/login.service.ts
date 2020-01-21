@@ -30,6 +30,7 @@ export class LoginService {
    */
   private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
+
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
@@ -40,6 +41,7 @@ export class LoginService {
  */
   private tokenAvailable(): boolean {
     return !!localStorage.getItem('jwt');
+    
   }
 
   /**
@@ -49,11 +51,14 @@ export class LoginService {
  */
   login(user: any): Observable<any> {
 
-    const url = 'http://127.0.0.1:8000/api/login_check';
+    const url = 'http://localhost:8080/lunchtime/login';
+    console.log('hello');
+    console.log(url, ' + ', user);
     return this.http.post<any>(url, user, { responseType: 'json' })
       .pipe(
 
         map((data) => {
+        console.log(data);
 
           if (data) {
             /**
@@ -62,6 +67,7 @@ export class LoginService {
              */
             localStorage.setItem('jwt', data.token);
             this.loggedIn.next(true);
+            console.log('yo');
 
           }
         }),

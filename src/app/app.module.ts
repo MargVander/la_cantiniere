@@ -20,7 +20,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
@@ -37,6 +37,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
+import { TokenInterceptor } from './services/token-interceptor';
+import { AuthGuard } from './services/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,14 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     CommonModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

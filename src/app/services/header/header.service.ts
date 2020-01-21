@@ -21,7 +21,7 @@ export class HeaderService {
   constructor() { }
 
   headerBuilder() {
-
+    console.log('fuck');
     /**
      * création du header contenant le jwt
      */
@@ -30,7 +30,8 @@ export class HeaderService {
         Authorization: `Bearer ${jwt}`
         })
     };
-  
+
     return httpOptions;
+    
   }
 }
