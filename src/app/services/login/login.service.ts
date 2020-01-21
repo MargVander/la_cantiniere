@@ -66,6 +66,7 @@ export class LoginService {
              * on passe loggedIn à true
              */
             localStorage.setItem('jwt', data.token);
+            console.log(data);
             this.loggedIn.next(true);
             console.log('yo');
 
@@ -77,6 +78,9 @@ export class LoginService {
 
 
   }
+
+
+
   /**
    * Deconnexion
    */
@@ -102,21 +106,6 @@ export class LoginService {
     return throwError(errorMessage);
 
   }
-
-  /**
-   *
-   * @param error
-   * traitement des erreurs register
-   */
-  handleRegisterError(error) {
-
-    let errorMessage = '';
-
-    errorMessage = error.error.violations[0].title;
-
-    return throwError(errorMessage);
-  }
-
 
 }
 
