@@ -4,7 +4,7 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
-import { HeaderService } from '../header/header.service';
+//import { HeaderService } from '../header/header.service';
 
 /**
  * Ce service gère :
@@ -19,7 +19,7 @@ import { HeaderService } from '../header/header.service';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient, private headerService: HeaderService, private router: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
   data: any;
   user: any;
@@ -28,21 +28,21 @@ export class LoginService {
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
    * connecté
    */
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  // private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+  // get isLoggedIn() {
+  //   return this.loggedIn.asObservable();
+  // }
 
   /**
  * cette fonction permet de garder loogedIn à true
  * tant que le jwt est en mémoire
  */
-  private tokenAvailable(): boolean {
-    return !!localStorage.getItem('jwt');
+  // private tokenAvailable(): boolean {
+  //   return !!localStorage.getItem('jwt');
     
-  }
+  // }
 
   /**
  *
@@ -55,19 +55,21 @@ export class LoginService {
     console.log('hello');
     console.log(url, ' + ', user);
     return this.http.post<any>(url, user, { responseType: 'json' })
+
       .pipe(
 
         map((data) => {
-        console.log(data);
+          console.log(data);
 
           if (data) {
+            console.log(data);
             /**
              * si on reçoit une réponse du serveur on enregistre le jwt et
              * on passe loggedIn à true
              */
             localStorage.setItem('jwt', data.token);
             console.log(data);
-            this.loggedIn.next(true);
+            //this.loggedIn.next(true);
             console.log('yo');
 
           }
@@ -79,13 +81,21 @@ export class LoginService {
 
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('jwt')
+  }
+
+  getToken() {
+    return localStorage.getItem('jwt')
+  }
+
 
 
   /**
    * Deconnexion
    */
   logout() {
-    this.loggedIn.next(false);
+    //this.loggedIn.next(false);
     localStorage.removeItem('jwt');
     this.router.navigate(['/home']);
   }
@@ -103,6 +113,7 @@ export class LoginService {
 
     let errorMessage = '';
     errorMessage = error.error.message;
+    console.log(errorMessage);
     return throwError(errorMessage);
 
   }

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
-    this.loading = true;
+    //this.loading = true;
 
     this.loginService.login(this.loginForm.value).subscribe(
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       user => {
 
         console.log(user)
-        this.loading = false;
+        // this.loading = false;
 
         // redirection
         this.router.navigate(['']);
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.error = error;
         // console.log(error, 'ok composant');
 
-        this.loading = false;
+        //this.loading = false;
       }
     );
   }
