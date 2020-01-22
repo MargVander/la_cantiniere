@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+import { UserService } from '../services/user/user.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common'
+=======
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user/user.service'
 import { Subscription } from 'rxjs'
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import {Router} from "@angular/router"
 
+>>>>>>> dev
 
 @Component({
   selector: 'app-user-edit',
@@ -12,6 +19,29 @@ import {Router} from "@angular/router"
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
+<<<<<<< HEAD
+
+  private souscription: Subscription
+  private user: any
+  id: number
+
+  constructor(private userService: UserService, private location: Location, private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.getUser()
+  }
+
+  getUser() {
+    this.id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.souscription = this.userService.getUser(this.id)
+      .subscribe(
+        resp => {
+          this.user = resp;
+          console.log(this.user);
+
+        }
+      )
+=======
   id:number;
   public user: any;
   private souscription: Subscription;
@@ -56,6 +86,7 @@ export class UserEditComponent implements OnInit {
     this.router.navigate([`/profil/${this.user.id}`])
 
 
+>>>>>>> dev
   }
 
 }

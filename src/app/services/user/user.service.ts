@@ -2,49 +2,84 @@ import { User } from './../../models/user';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-
+import { Observable } from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  reqHeader = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjEwMC4wMCwicG9zdGFsQ29kZSI6Ijc1MDAwIiwicmVnaXN0cmF0aW9uRGF0ZSI6MTU1MTUzNjI0ODAwMCwiZW1haWwiOiJ0b3RvQGdtYWlsLmNvbSIsImlzTHVuY2hMYWR5Ijp0cnVlLCJuYW1lIjoiRHVyYW50IiwiZmlyc3RuYW1lIjoiQWxiZXJ0IiwicGhvbmUiOiIwMTQ4NTY3ODk3IiwidG93biI6IlBhcmlzIiwic2V4IjowLCJzdGF0dXMiOjB9LCJyb2xlcyI6WyJST0xFX0xVTkNITEFEWSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRvdG9AZ21haWwuY29tIiwiZXhwIjoxNTc5MjYyNTk3fQ.gCCzty1hlkORf_KudKjpHpg83LKlrQQWsPlpjAWhTY6G6Q1Kq--4bStK9Mz5KPqCj7AU33vtEUxS-oq9LEj_vw'
+  });
+
   constructor(private http: HttpClient) { }
 
   setInscription(data: any) {
 
-    // var reqHeader = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1NzU0OTY4OTd9.qniK5uyzGvrAYkp1ODqQATTpjAc5KElsXefHT0TYD0j7Uk0UQz1XDN40mfzkT1M18bhxrqWE5iXJD8jbl3YQgg'
-    // });
-
     console.log(data)
-    this.http.put('http://localhost:8080/lunchtime/user/register/', data)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    let result = this.http.put('http://localhost:8080/lunchtime/user/register/', data)
+    return result;
   }
 
-  getUser(id) {
-    var reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzg2NDU5MTl9.QIBijCY-pk6_sT0LCPj-RI5w_O7Mf8DK3TbIyeita74XvG_1dPE44dqygPPze2OtDiaZSIF431IC2vKwGkrKMw'
-    });
-    return this.http.get(`http://localhost:8080/lunchtime/user/find/${id}`, { headers: reqHeader })
+  getUsers(): Observable<any> {
+
+    return this.http.get('http://localhost:8080/lunchtime/user/findall', { headers: this.reqHeader });
+
   }
 
-  editUser(id, user: User): Observable<User[]> {
-    var reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzg2NjUzMDF9.-xGvgNjG9EPlOIGL3-z3OFgQTurwWHkrGmpm5XgnEoAYoHbOyFTb7m_BCCIbCaTZwjmLdAA2cG40sJSOptpW0Q'
-    });
-    this.http.patch<User[]>(`http://localhost:8080/lunchtime/user/update/${id}`, user, { headers: reqHeader })
-      .subscribe(user => {
-        console.log(user);
-      }, error => {
-        console.log(error); 
-      })
-      return;
+  getUser(id: number): Observable<any> {
+
+    return this.http.get('http://localhost:8080/lunchtime/user/find/' + id, { headers: this.reqHeader });
+
+
   }
+
+  setActivation(id: number) {
+
+    let obs: Observable<any>
+
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/activate/' + id, null, { headers: this.reqHeader })
+    console.log(obs)
+    return obs;
+  }
+
+  setDesactivation(id: number) {
+
+    let obs: Observable<any>
+
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/deactivate/' + id, null, { headers: this.reqHeader })
+    console.log(obs)
+    return obs;
+
+  }
+
+  setDroit(id: number) {
+
+    this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, null, { headers: this.reqHeader })
+
+  }
+
+  adminUpdate(id: number, content: any) {
+
+    let obs: Observable<any>
+    console.log(content)
+
+
+    console.log(id);
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, content, { headers: this.reqHeader })
+    console.log(obs);
+    return obs;
+  }
+
+  walletUpdate(id: number, content: number) {
+
+    let obs: Observable<any>
+    console.log(content)
+
+    obs = this.http.post('http://localhost:8080/lunchtime/user/credit/' + id + '?amount=' + content, null, { headers: this.reqHeader })
+    console.log(obs)
+    return obs;
+  }
+
 }
