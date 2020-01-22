@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { HeaderService } from '../header/header.service';
+import * as jwt_decode from 'jwt-decode';
 
 /**
  * Ce service gère :
@@ -19,8 +20,9 @@ import { HeaderService } from '../header/header.service';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient, private headerService: HeaderService, private router: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
+  decode: any
   data: any;
   user: any;
 
@@ -47,30 +49,32 @@ export class LoginService {
  * @param user
  * méthode login utilisateur
  */
-  login(user: any): Observable<any> {
+  login(user: any): Observable<HttpResponse<Object>> {
+
 
     const url = 'http://localhost:8080/lunchtime/login';
-    return this.http.post<any>(url, user, { responseType: 'json' })
-      .pipe(
+    return this.http.post<HttpResponse<Object>>(url, user, { observe: 'response' })
 
-        map((data) => {
+      .pipe(tap(res => {
+        console.log(res.headers.get('Authorization'))
+        let decode = jwt_decode(res.headers.get('Authorization'))
+        console.log(decode)
 
-          if (data) {
-            /**
-             * si on reçoit une réponse du serveur on enregistre le jwt et
-             * on passe loggedIn à true
-             */
-            localStorage.setItem('jwt', data.token);
-            console.log(data);
-            this.loggedIn.next(true);
+        //     // if (data) {
+        //     //   /**
+        //     //    * si on reçoit une réponse du serveur on enregistre le jwt et
+        //     //    * on passe loggedIn à true
+        //     //    */
+        //     //   console.log(data);
+        //     //   localStorage.setItem('jwt', data.token);
+        //     //   this.loggedIn.next(true);
 
-          }
-        }),
+        //     // }
+      }),
 
-        catchError(this.handleLoginError),
-      );
-
-
+        // catchError(this.handleLoginError),
+        // );
+      )
   }
 
 
@@ -93,13 +97,13 @@ export class LoginService {
    * @param error
    * traitement des erreurs login
    */
-  handleLoginError(error) {
+  // handleLoginError(error) {
 
-    let errorMessage = '';
-    errorMessage = error.error.message;
-    return throwError(errorMessage);
+  //   let errorMessage = '';
+  //   errorMessage = error.error.message;
+  //   return throwError(errorMessage);
 
-  }
+  // }
 
 }
 

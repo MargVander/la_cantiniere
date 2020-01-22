@@ -12,6 +12,7 @@ import { HttpHeaders } from '@angular/common/http';
  * récupération du jwt dans le local storage
  */
 const jwt = localStorage.getItem('jwt');
+console.log(jwt);
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,9 @@ export class HeaderService {
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Bearer ${jwt}`
-        })
+      })
     };
-  
+
     return httpOptions;
   }
 }

@@ -20,7 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
 
         if (localStorage.getItem('jwt')) {
-            if (request.url.includes("localhost") || request.url.includes("127.0.0.1")) {
+            if (request.url.includes("localhost")) {
                 request = this.addToken(request, localStorage.getItem('jwt'));
             }
         }
