@@ -27,7 +27,13 @@ export class PanierComponent implements OnInit {
   order: Order;
    
   ngOnInit() {
-    
+   /* if (this.auth.isLogged()) {
+      this.isAuth = true;
+      this.userConnected = this.auth.getUserConnected();
+    } else {
+      this.userConnected = null;
+      this.isAuth = false;
+    }*/
     this.recupererPanier();
     if (this.menuPanier != null) {
       this.calculerTotalPanier();
@@ -65,7 +71,7 @@ export class PanierComponent implements OnInit {
     }
   }
 
-  /* creerLaCommande() {
+   creerLaCommande() {
     const user = this.userConnected;
     const menu = this.menuPanier;
 
@@ -98,5 +104,5 @@ export class PanierComponent implements OnInit {
         );
       }
     
-  } */
+  } 
 }

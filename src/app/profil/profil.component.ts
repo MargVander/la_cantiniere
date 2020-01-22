@@ -16,14 +16,9 @@ export class ProfilComponent implements OnInit {
   public user: any;
   private souscription: Subscription;
 
-<<<<<<< HEAD
-  constructor() {
-
-=======
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.route.params.subscribe(param=> this.id = param.id)
->>>>>>> dev
   }
 
   ngOnInit() {

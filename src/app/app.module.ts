@@ -1,3 +1,6 @@
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -30,16 +33,10 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
-<<<<<<< HEAD
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './user/user.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-=======
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
->>>>>>> dev
 
 @NgModule({
   declarations: [
@@ -65,17 +62,13 @@ import { OrderComponent } from './order/order.component';
     MealEditComponent,
     MenusComponent,
     MenuEditComponent,
-<<<<<<< HEAD
-    UsersComponent,
-    UserComponent,
-    UserEditComponent,
-=======
     UserEditComponent,
     AccueilComponent,
     ConstraintEditComponent,
     OrderComponent,
->>>>>>> dev
-  ],
+    UserComponent,
+    UsersComponent
+  ], 
 
   imports: [
     BrowserModule,

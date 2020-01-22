@@ -1,3 +1,4 @@
+import { UsersComponent } from './users/users.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
@@ -20,19 +21,12 @@ import { MealsComponent } from './meals/meals.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
-<<<<<<< HEAD
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './user/user.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
-import { ProfilComponent } from './profil/profil.component';
-=======
 import { ProfilComponent } from './profil/profil.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AccueilComponent } from './accueil/accueil.component';
-
+import { UserComponent } from './user/user.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
->>>>>>> dev
 
 
 const routes: Routes = [
@@ -56,19 +50,17 @@ const routes: Routes = [
   { path: 'mealedit/:id', component: MealEditComponent },
   { path: 'menus', component: MenusComponent },
   { path: 'menuedit/:id', component: MenuEditComponent },
-<<<<<<< HEAD
+
   { path: 'users', component: UsersComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'useredit/:id', component: UserEditComponent },
-  { path: 'profil', component: ProfilComponent }
-=======
+  { path: 'profil', component: ProfilComponent },
   { path: 'profil/:id', component: ProfilComponent },
   { path: 'profiledit/:id', component: UserEditComponent },
   { path: '', component: AccueilComponent },
   { path: 'constraintedit', component: ConstraintEditComponent },
   { path: 'mes-commandes/:id', component: OrderComponent },
 
->>>>>>> dev
 ];
 
 @NgModule({
