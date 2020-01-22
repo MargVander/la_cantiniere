@@ -4,7 +4,6 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
-import { HeaderService } from '../header/header.service';
 import * as jwt_decode from 'jwt-decode';
 
 /**
@@ -30,19 +29,21 @@ export class LoginService {
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
    * connecté
    */
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  // private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+
+  // get isLoggedIn() {
+  //   return this.loggedIn.asObservable();
+  // }
 
   /**
  * cette fonction permet de garder loogedIn à true
  * tant que le jwt est en mémoire
  */
-  private tokenAvailable(): boolean {
-    return !!localStorage.getItem('jwt');
-  }
+  // private tokenAvailable(): boolean {
+  //   return !!localStorage.getItem('jwt');
+
+  // }
 
   /**
  *
@@ -77,13 +78,21 @@ export class LoginService {
       )
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('jwt')
+  }
+
+  getToken() {
+    return localStorage.getItem('jwt')
+  }
+
 
 
   /**
    * Deconnexion
    */
   logout() {
-    this.loggedIn.next(false);
+    //this.loggedIn.next(false);
     localStorage.removeItem('jwt');
     this.router.navigate(['/home']);
   }
