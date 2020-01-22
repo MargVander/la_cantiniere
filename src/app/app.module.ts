@@ -21,11 +21,6 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
-<<<<<<< HEAD
-=======
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
->>>>>>> 5ec7eae8edd17e78c3068a6ce5b84ff042f8525b
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
@@ -41,9 +36,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
-import { TokenInterceptor } from './services/token-interceptor';
-import { AuthGuard } from './services/auth/auth.guard';
-
 import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard } from './services/auth/auth.guard';
 
@@ -96,12 +88,8 @@ import { AuthGuard } from './services/auth/auth.guard';
       useClass: TokenInterceptor,
       multi: true
     },
-<<<<<<< HEAD
-    AuthGuard],
-=======
     AuthGuard,
   ],
->>>>>>> 5ec7eae8edd17e78c3068a6ce5b84ff042f8525b
   bootstrap: [AppComponent]
 })
 export class AppModule { }

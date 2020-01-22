@@ -8,18 +8,10 @@
 //  * HTTP vers l'API
 //  */
 
-<<<<<<< HEAD
-/**
- * récupération du jwt dans le local storage
- */
-const jwt = localStorage.getItem('jwt');
-console.log(jwt);
-=======
 // /**
 //  * récupération du jwt dans le local storage
 //  */
 // const jwt = localStorage.getItem('jwt');
->>>>>>> 5ec7eae8edd17e78c3068a6ce5b84ff042f8525b
 
 // @Injectable({
 //   providedIn: 'root'
@@ -39,22 +31,7 @@ console.log(jwt);
 //         })
 //     };
 
-<<<<<<< HEAD
-    /**
-     * création du header contenant le jwt
-     */
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${jwt}`
-      })
-    };
-
-    return httpOptions;
-  }
-}
-=======
 //     return httpOptions;
-    
+
 //   }
 // }
->>>>>>> 5ec7eae8edd17e78c3068a6ce5b84ff042f8525b
