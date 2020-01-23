@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpClientModule } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import * as jwt_decode from 'jwt-decode';
+import { HeaderService } from '../header/header.service';
 
 /**
  * Ce service gère :
@@ -21,7 +22,8 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
-  decode: any
+  // tokenAuth : any;
+  // decode: any;
   data: any;
   user: any;
 
@@ -57,9 +59,11 @@ export class LoginService {
     return this.http.post<HttpResponse<Object>>(url, user, { observe: 'response' })
 
       .pipe(tap(res => {
+        let tokenAuth = res.headers.get('Authorization');
         console.log(res.headers.get('Authorization'))
         let decode = jwt_decode(res.headers.get('Authorization'))
         console.log(decode)
+        localStorage.setItem('Authorization', tokenAuth);
 
         //     // if (data) {
         //     //   /**
@@ -86,6 +90,9 @@ export class LoginService {
     return localStorage.getItem('jwt')
   }
 
+  // getTokenAuth(){
+  //   return localStorage.setItem('Authorization', this.tokenAuth)
+  // }
 
 
   /**

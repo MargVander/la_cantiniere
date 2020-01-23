@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   constructor(private UserService: UserService) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem('Authorization'))
     this.getUsers();
   }
 
