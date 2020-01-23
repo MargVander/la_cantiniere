@@ -25,6 +25,7 @@
     "angular-validation-match": "^1.9.0",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
+    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "local-storage": "^2.0.0",
     "moment": "^2.24.0",

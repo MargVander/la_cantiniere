@@ -38,6 +38,7 @@ import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard } from './services/auth/auth.guard';
+//import { HeaderService } from './services/header/header.service';
 
 
 @NgModule({

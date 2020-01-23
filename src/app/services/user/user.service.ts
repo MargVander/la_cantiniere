@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-//import { HeaderService } from '../header/header.service';
+import { HeaderService } from '../header/header.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  
+  httpOptions = this.headerService.headerBuilder();
+
+
+  // ----------> Pour toi : https://www.youtube.com/watch?v=j9eRIUz8ZlQ
+
+  
+  // test = localStorage.getItem('Authorization');
+  // reqHeader = new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   'Authorization': `${ this.test }` });
+
 
   // reqHeader = new HttpHeaders({
   //   'Content-Type': 'application/json',
   //   'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzk2ODUzOTV9.YHmv5eQe2qJD02dMKnn69MaO3tP0gSa5OaP88n2d5ru8HkqHrU1mX9sun8yXv9ezTItBWTRPjJECr4on50fNew'
   // });
 
-  constructor(private http: HttpClient) { }
+
+
+  constructor(private http: HttpClient, private headerService: HeaderService) { }
 
   setInscription(data: any) {
 
@@ -25,7 +39,9 @@ export class UserService {
 
   getUsers(): Observable<any> {
 
-    return this.http.get('http://localhost:8080/lunchtime/user/findall');
+    //console.log(this.test);
+    
+    return this.http.get('http://localhost:8080/lunchtime/user/findall', this.httpOptions);
 
   }
 
