@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../services/login/login.service';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { HttpHeaderResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -39,27 +40,28 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
-    //this.loading = true;
+    // this.loading = true;
 
-    this.loginService.login(this.loginForm.value).subscribe(
+    this.loginService.login(this.loginForm.value)
+      .subscribe(
+        res => console.log()
 
-      // traitement de la réponse HTTP, en cas d'erreur on affiche
-      // l'erreur dans la vue
-      user => {
+        // error => console.log(error)
 
-        console.log(user)
+        // traitement de la réponse HTTP, en cas d'erreur on affiche
+        // l'erreur dans la vue
+        // user => {
+
         // this.loading = false;
 
         // redirection
-        this.router.navigate(['']);
-      },
-      error => {
-        this.error = error;
+        // this.router.navigate(['']);
+        // error => {
+        // this.error = error;
         // console.log(error, 'ok composant');
 
-        //this.loading = false;
-      }
-    );
+        // this.loading = false;
+      );
   }
 
 }

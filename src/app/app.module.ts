@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { CommandesComponent } from './commandes/commandes.component';
@@ -20,8 +21,6 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
 import { NewMealComponent } from './new-meal/new-meal.component';
 import { NewMenuComponent } from './new-menu/new-menu.component';
@@ -39,6 +38,7 @@ import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard } from './services/auth/auth.guard';
+
 
 @NgModule({
   declarations: [
