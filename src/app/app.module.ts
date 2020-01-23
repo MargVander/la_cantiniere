@@ -36,9 +36,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
-import { TokenInterceptor } from './services/token-interceptor';
+// import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard } from './services/auth/auth.guard';
-//import { HeaderService } from './services/header/header.service';
 
 
 @NgModule({
@@ -84,11 +83,11 @@ import { AuthGuard } from './services/auth/auth.guard';
     CommonModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // },
     AuthGuard,
   ],
   bootstrap: [AppComponent]

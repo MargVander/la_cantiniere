@@ -3,7 +3,8 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot } from '@angular/router';
+  RouterStateSnapshot
+} from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -23,32 +24,32 @@ export class AuthGuard implements CanActivate {
     // tslint:disable-next-line: no-shadowed-variable
     private LoginService: LoginService,
     private router: Router
-  ) {}
+  ) { }
 
-  canActivate(): boolean {
-    if (this.LoginService.loggedIn()) {
-      return true
-    } else {
-      this.router.navigate(['/home'])
-      return false
-    }
-  }
-
-  // canActivate(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): Observable<boolean> {
-  //   return this.LoginService.isLoggedIn
-  //     .pipe(
-  //       take(1),
-  //       map((isLoggedIn: boolean) => {
-  //         if (!isLoggedIn) {
-  //           this.router.navigate(['/login']);
-  //           return false;
-  //         }
-  //         return true;
-  //       }));
-
+  // canActivate(): boolean {
+  //   if (this.LoginService.loggedIn()) {
+  //     return true
+  //   } else {
+  //     this.router.navigate(['/home'])
+  //     return false
+  //   }
   // }
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.LoginService.isLoggedIn
+      .pipe(
+        take(1),
+        map((isLoggedIn: boolean) => {
+          if (!isLoggedIn) {
+            this.router.navigate(['/login']);
+            return false;
+          }
+          return true;
+        }));
+
+  }
 
 }

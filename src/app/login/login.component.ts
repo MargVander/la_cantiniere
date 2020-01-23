@@ -44,24 +44,26 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(this.loginForm.value)
       .subscribe(
-        res => console.log()
-
-        // error => console.log(error)
 
         // traitement de la réponse HTTP, en cas d'erreur on affiche
         // l'erreur dans la vue
-        // user => {
+        res => {
 
-        // this.loading = false;
+          console.log(res)
+          this.loading = false;
 
-        // redirection
-        // this.router.navigate(['']);
-        // error => {
-        // this.error = error;
-        // console.log(error, 'ok composant');
+          // redirection
+          this.router.navigate(['']);
+          error => {
+            this.error = error;
+            console.log(error, 'ok composant');
 
-        // this.loading = false;
-      );
+            this.loading = false;
+          }
+
+        },
+        error => console.log(error),
+
+      )
   }
-
 }

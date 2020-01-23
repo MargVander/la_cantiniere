@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import * as jwt_decode from 'jwt-decode';
-import { HeaderService } from '../header/header.service';
 
 /**
  * Ce service gère :
@@ -22,8 +21,6 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
-  // tokenAuth : any;
-  // decode: any;
   data: any;
   user: any;
 
@@ -31,21 +28,26 @@ export class LoginService {
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
    * connecté
    */
-  // private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
+  logedd = new BehaviorSubject("")
 
-  // get isLoggedIn() {
-  //   return this.loggedIn.asObservable();
-  // }
+  ok() {
+    return this.logedd
+  }
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
 
   /**
  * cette fonction permet de garder loogedIn à true
  * tant que le jwt est en mémoire
  */
-  // private tokenAvailable(): boolean {
-  //   return !!localStorage.getItem('jwt');
+  private tokenAvailable(): boolean {
+    return !!localStorage.getItem('Authorization');
 
-  // }
+  }
 
   /**
  *
@@ -65,61 +67,62 @@ export class LoginService {
         console.log(decode)
         localStorage.setItem('Authorization', tokenAuth);
 
-        //     // if (data) {
-        //     //   /**
-        //     //    * si on reçoit une réponse du serveur on enregistre le jwt et
-        //     //    * on passe loggedIn à true
-        //     //    */
-        //     //   console.log(data);
-        //     //   localStorage.setItem('jwt', data.token);
-        //     //   this.loggedIn.next(true);
+        console.log(res)
+        if (res) {
 
-        //     // }
+          // this.log.next = 1;
+          /**
+           * si on reçoit une réponse du serveur on enregistre le jwt et
+           * on passe loggedIn à true
+           */
+          this.logedd.next('ok');
+          console.log(this.logedd);
+          this.loggedIn.next(true);
+        }
       }),
 
-        // catchError(this.handleLoginError),
-        // );
-      )
-  }
-
-  loggedIn() {
-    return !!localStorage.getItem('jwt')
+        catchError(this.handleLoginError),
+      );
   }
 
   getToken() {
-    return localStorage.getItem('jwt')
+    return localStorage.getItem('Authorization')
   }
-
-  // getTokenAuth(){
-  //   return localStorage.setItem('Authorization', this.tokenAuth)
-  // }
-
 
   /**
    * Deconnexion
    */
   logout() {
-    //this.loggedIn.next(false);
-    localStorage.removeItem('jwt');
-    this.router.navigate(['/home']);
+    console.log('ok');
+
+    this.logedd.next('ok');
+    console.log(this.logedd)
+
+    this.loggedIn.next(false);
+    localStorage.removeItem('Authorization');
+    console.log(localStorage.removeItem('Authorization'));
+
+    this.router.navigate(['']);
+
+    return this.logedd
   }
 
   /**
- * Traitement des erreurs HTTP
- */
+  * Traitement des erreurs HTTP
+  */
 
   /**
    *
    * @param error
    * traitement des erreurs login
    */
-  // handleLoginError(error) {
+  handleLoginError(error) {
 
-  //   let errorMessage = '';
-  //   errorMessage = error.error.message;
-  //   return throwError(errorMessage);
+    let errorMessage = '';
+    errorMessage = error.error.message;
+    return throwError(errorMessage);
 
-  // }
+  }
 
 }
 

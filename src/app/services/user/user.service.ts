@@ -8,24 +8,8 @@ import { HeaderService } from '../header/header.service';
   providedIn: 'root'
 })
 export class UserService {
-  
+
   httpOptions = this.headerService.headerBuilder();
-
-
-  // ----------> Pour toi : https://www.youtube.com/watch?v=j9eRIUz8ZlQ
-
-  
-  // test = localStorage.getItem('Authorization');
-  // reqHeader = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   'Authorization': `${ this.test }` });
-
-
-  // reqHeader = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUwLjAwLCJwb3N0YWxDb2RlIjoiNzUwMDAiLCJyZWdpc3RyYXRpb25EYXRlIjoxNTUxNTM2MjQ4MDAwLCJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaXNMdW5jaExhZHkiOnRydWUsIm5hbWUiOiJEdXJhbnQiLCJmaXJzdG5hbWUiOiJBbGJlcnQiLCJwaG9uZSI6IjAxNDg1Njc4OTciLCJ0b3duIjoiUGFyaXMiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzk2ODUzOTV9.YHmv5eQe2qJD02dMKnn69MaO3tP0gSa5OaP88n2d5ru8HkqHrU1mX9sun8yXv9ezTItBWTRPjJECr4on50fNew'
-  // });
-
 
 
   constructor(private http: HttpClient, private headerService: HeaderService) { }
@@ -39,15 +23,13 @@ export class UserService {
 
   getUsers(): Observable<any> {
 
-    //console.log(this.test);
-    
     return this.http.get('http://localhost:8080/lunchtime/user/findall', this.httpOptions);
 
   }
 
   getUser(id: number): Observable<any> {
 
-    return this.http.get('http://localhost:8080/lunchtime/user/find/' + id);
+    return this.http.get('http://localhost:8080/lunchtime/user/find/' + id, this.httpOptions);
 
 
   }
@@ -56,7 +38,7 @@ export class UserService {
 
     let obs: Observable<any>
 
-    obs = this.http.patch('http://localhost:8080/lunchtime/user/activate/' + id, null)
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/activate/' + id, null, this.httpOptions)
     console.log(obs)
     return obs;
   }
@@ -65,7 +47,7 @@ export class UserService {
 
     let obs: Observable<any>
 
-    obs = this.http.patch('http://localhost:8080/lunchtime/user/deactivate/' + id, null)
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/deactivate/' + id, null, this.httpOptions)
     console.log(obs)
     return obs;
 
@@ -73,7 +55,7 @@ export class UserService {
 
   setDroit(id: number) {
 
-    this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, null)
+    this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, null, this.httpOptions)
 
   }
 
@@ -84,7 +66,7 @@ export class UserService {
 
 
     console.log(id);
-    obs = this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, content)
+    obs = this.http.patch('http://localhost:8080/lunchtime/user/update/' + id, content, this.httpOptions)
     console.log(obs);
     return obs;
   }
@@ -94,7 +76,7 @@ export class UserService {
     let obs: Observable<any>
     console.log(content)
 
-    obs = this.http.post('http://localhost:8080/lunchtime/user/credit/' + id + '?amount=' + content, null)
+    obs = this.http.post('http://localhost:8080/lunchtime/user/credit/' + id + '?amount=' + content, null, this.httpOptions)
     console.log(obs)
     return obs;
   }
