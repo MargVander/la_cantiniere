@@ -16,9 +16,6 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['a-la-carte']">A la carte</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['users']">Users</a>
-            </li>
         </ul>
         <!-- Links right -->
         <ul class="navbar-nav">
@@ -27,14 +24,14 @@
                 <a class="nav-link" [routerLink]="['dashboard']">Dashboard</a>
             </li>
             <!-- Dropdown user -->
-            <li class="nav-item dropdown myText">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Mon compte
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mon profil</a>
-                    <a class="dropdown-item" href="#">Mes commandes</a>
+                    <a class="dropdown-item" [routerLink]="['profil/:id']">Mon profil</a>
+                    <a class="dropdown-item" [routerLink]="['mes-commandes/:id']">Mes commandes</a>
                 </div>
             </li>
 
@@ -47,8 +44,8 @@
             <li class="nav-item">
                 <div *ngIf='logged'>
 
-                    <button type="input" (click)=logOut() class="nav-link"> Déconnexion
-                    </button>
+                    <a type="input" (click)=logOut() class="nav-link"> Déconnexion
+                    </a>
                 </div>
             </li>
             <li class="nav-item">

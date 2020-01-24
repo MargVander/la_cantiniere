@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: '', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   /**
  * ces pages sont protégées par authguard
  */
@@ -53,7 +54,6 @@ const routes: Routes = [
   { path: 'newingredient', component: NewIngredientComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent, canActivate: [AuthGuard] },
   { path: 'plat', component: PlatComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'newmeal', component: NewMealComponent, canActivate: [AuthGuard] },
   { path: 'newmenu', component: NewMenuComponent, canActivate: [AuthGuard] },
   { path: 'ingredientedit/:id', component: IngredientEditComponent, canActivate: [AuthGuard] },
