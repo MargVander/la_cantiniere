@@ -1,7 +1,7 @@
 <div class="container">
     <div class="twoparts">
         <h1>
-            {{user.firstname}} {{user.name}} &nbsp; 
+            {{user.firstname}} {{user.name}} &nbsp;
         </h1>
         <img class="icon cantiniere" *ngIf="user.isLunchLady" src="../../assets/img/chef.svg">
     </div>
@@ -28,7 +28,7 @@
                 <img class="icon" src="../../assets/img/at.svg">
                 &nbsp; {{user.email}}
             </div>
-            <button [routerLink]="['/profiledit', user.id]" class="btn" >Editer le profil</button>
+            <button [routerLink]="['/profiledit', user.id]" class="btn">Editer le profil</button>
 
         </div>
     </div>

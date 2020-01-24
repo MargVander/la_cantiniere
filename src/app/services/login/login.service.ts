@@ -23,18 +23,13 @@ export class LoginService {
 
   data: any;
   user: any;
+  log: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   /**
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
    * connecté
    */
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
-
-  logedd = new BehaviorSubject("")
-
-  ok() {
-    return this.logedd
-  }
+  public loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -70,13 +65,12 @@ export class LoginService {
         console.log(res)
         if (res) {
 
-          // this.log.next = 1;
+          this.log.next(true)
           /**
            * si on reçoit une réponse du serveur on enregistre le jwt et
            * on passe loggedIn à true
            */
-          this.logedd.next('ok');
-          console.log(this.logedd);
+
           this.loggedIn.next(true);
         }
       }),
@@ -93,18 +87,17 @@ export class LoginService {
    * Deconnexion
    */
   logout() {
+
     console.log('ok');
 
-    this.logedd.next('ok');
-    console.log(this.logedd)
-
     this.loggedIn.next(false);
-    localStorage.removeItem('Authorization');
-    console.log(localStorage.removeItem('Authorization'));
+    localStorage.clear();
 
     this.router.navigate(['']);
 
-    return this.logedd
+    this.log.next(false)
+
+
   }
 
   /**
