@@ -22,16 +22,34 @@
         </ul>
         <!-- Links right -->
         <ul class="navbar-nav">
+            <!-- Part admin -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['dashboard']">Dashboard</a>
+            </li>
+            <!-- Dropdown user -->
+            <li class="nav-item dropdown myText">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Mon compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Mon profil</a>
+                    <a class="dropdown-item" href="#">Mes commandes</a>
+                </div>
+            </li>
+
+            <!-- Login/register & cart -->
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['login']" *ngIf='!alpha'>Connexion</a>
             </li>
             <li class="nav-item">
-                <button type="input" (click)=logOut() class="nav-link" *ngIf='alpha'> Déconnexion
-                </button>
+                <a class="nav-link" (click)="logOut()" *ngIf='alpha'>Déconnexion</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['panier']">Panier</a>
             </li>
+
+
         </ul>
 
         <!-- <ng-template #loggedOut>

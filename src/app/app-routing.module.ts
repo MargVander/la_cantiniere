@@ -29,6 +29,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   /**
  * ces pages sont protégées par authguard
  */
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'constraintedit', component: ConstraintEditComponent, canActivate: [AuthGuard] },
   { path: 'mes-commandes/:id', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'cagnotte', component: CagnotteComponent, canActivate: [AuthGuard] },

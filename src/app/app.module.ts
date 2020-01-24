@@ -38,6 +38,7 @@ import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 // import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard } from './services/auth/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { AuthGuard } from './services/auth/auth.guard';
     ConstraintEditComponent,
     OrderComponent,
     LoginComponent,
+    DashboardComponent,
   ],
 
   imports: [
