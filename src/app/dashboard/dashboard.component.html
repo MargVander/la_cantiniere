@@ -15,8 +15,10 @@
             <div class="collapse-content">
                 <div class="collapse" id="collapseMenu">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a [routerLink]="['newmenu']" class="card-link">Ajouter un menu</a></li>
-                        <li class="list-group-item"><a [routerLink]="['menus']" class="card-link">Tous les menus</a></li>
+                        <li class="list-group-item"><a routerLink='/newmenu' class="card-link">Ajouter un menu</a>
+                        </li>
+                        <li class="list-group-item"><a routerLink='/menus' class="card-link">Tous les menus</a>
+                        </li>
                     </ul>
                 </div>
                 <hr class="">
@@ -28,8 +30,10 @@
             <div class="collapse-content">
                 <div class="collapse" id="collapseMeal">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a [routerLink]="['newmeal']" class="card-link">Ajouter un plat</a></li>
-                        <li class="list-group-item"><a [routerLink]="['meals']" class="card-link">Tous les plats</a></li>
+                        <li class="list-group-item"><a routerLink='/newmeal' class="card-link">Ajouter un plat</a>
+                        </li>
+                        <li class="list-group-item"><a routerLink='/meals' class="card-link">Tous les plats</a>
+                        </li>
                     </ul>
                 </div>
                 <hr class="">
@@ -41,8 +45,10 @@
             <div class="collapse-content">
                 <div class="collapse" id="collapseIngredient">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a [routerLink]="['newingredient']" class="card-link">Ajouter un ingrédient</a></li>
-                        <li class="list-group-item"><a [routerLink]="['ingredients']"class="card-link">Tous les ingrédients</a></li>
+                        <li class="list-group-item"><a routerLink='/newingredient' class="card-link">Ajouter un
+                                ingrédient</a></li>
+                        <li class="list-group-item"><a routerLink='/ingredients' class="card-link">Tous les
+                                ingrédients</a></li>
                     </ul>
                 </div>
                 <hr class="">
@@ -61,8 +67,10 @@
                 commande...</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a [routerLink]="['commandes']" class="card-link">Afficher les commandes</a></li>
-            <li class="list-group-item"><a [routerLink]="['constraintedit']" class="card-link">Gérer mes contraintes</a></li>
+            <li class="list-group-item"><a routerLink='/commandes' class="card-link">Afficher les commandes</a>
+            </li>
+            <li class="list-group-item"><a routerLink='/constraintedit' class="card-link">Gérer mes contraintes</a>
+            </li>
         </ul>
     </div>
 
@@ -75,7 +83,7 @@
                 compte...</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a [routerLink]="['users']" class="card-link">Tous les utilisateurs</a></li>
+            <li class="list-group-item"><a routerLink='/users' class="card-link">Tous les utilisateurs</a></li>
         </ul>
     </div>
 </div>
