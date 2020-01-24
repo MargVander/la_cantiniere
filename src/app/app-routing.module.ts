@@ -25,7 +25,7 @@ import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { AuthGuard } from './services/auth/auth.guard';
+import { AuthGuard, AdminGuard } from './services/auth/auth.guard';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
@@ -39,19 +39,20 @@ const routes: Routes = [
   { path: 'menu-semaine', component: MenuSemaineComponent },
   { path: '', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
   /**
  * ces pages sont protégées par authguard
  */
-  { path: 'constraintedit', component: ConstraintEditComponent, canActivate: [AuthGuard] },
+  { path: 'constraintedit', component: ConstraintEditComponent, canActivate: [AdminGuard] },
   { path: 'mes-commandes/:id', component: OrderComponent, canActivate: [AuthGuard] },
-  { path: 'cagnotte', component: CagnotteComponent, canActivate: [AuthGuard] },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  // { path: 'cagnotte', component: CagnotteComponent, canActivate: [AuthGuard] },
+  // { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   { path: 'commandes', component: CommandesComponent, canActivate: [AuthGuard] },
   { path: 'ingredients', component: IngredientsComponent, canActivate: [AuthGuard] },
   { path: 'newingredient', component: NewIngredientComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent, canActivate: [AuthGuard] },
   { path: 'plat', component: PlatComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'newmeal', component: NewMealComponent, canActivate: [AuthGuard] },
   { path: 'newmenu', component: NewMenuComponent, canActivate: [AuthGuard] },
   { path: 'ingredientedit/:id', component: IngredientEditComponent, canActivate: [AuthGuard] },
@@ -59,7 +60,7 @@ const routes: Routes = [
   { path: 'mealedit/:id', component: MealEditComponent, canActivate: [AuthGuard] },
   { path: 'menus', component: MenusComponent, canActivate: [AuthGuard] },
   { path: 'menuedit/:id', component: MenuEditComponent, canActivate: [AuthGuard] },
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'users', component: UsersComponent, canActivate: [AdminGuard] },
   { path: 'user/:id', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'useredit/:id', component: UserEditComponent, canActivate: [AuthGuard] },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },

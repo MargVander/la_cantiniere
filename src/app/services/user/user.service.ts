@@ -23,6 +23,7 @@ export class UserService {
 
   getUsers(): Observable<any> {
 
+    console.log(this.httpOptions)
     return this.http.get('http://localhost:8080/lunchtime/user/findall', this.httpOptions);
 
   }

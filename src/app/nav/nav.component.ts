@@ -9,11 +9,13 @@ import { LoginService } from '../services/login/login.service';
 export class NavComponent implements OnInit {
 
   logged: boolean = false;
+  AdminLogged: Boolean = false
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.isLoggedIn.subscribe(logged => { console.log(logged); this.logged = logged })
+    this.loginService.isLoggedIn.subscribe(logged => { this.logged = logged })
+    this.loginService.isLoggedAdmin.subscribe(AdminLogged => { this.AdminLogged = AdminLogged })
   }
 
   logOut() {

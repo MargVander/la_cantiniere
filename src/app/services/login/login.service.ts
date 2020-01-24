@@ -23,7 +23,6 @@ export class LoginService {
 
   data: any;
   user: any;
-  log: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   /**
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
@@ -31,8 +30,14 @@ export class LoginService {
    */
   public loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
+  public loggDAdmin = new BehaviorSubject<boolean>(false);
+
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  get isLoggedAdmin() {
+    return this.loggDAdmin.asObservable()
   }
 
   /**
@@ -57,22 +62,29 @@ export class LoginService {
 
       .pipe(tap(res => {
         let tokenAuth = res.headers.get('Authorization');
-        console.log(res.headers.get('Authorization'))
         let decode = jwt_decode(res.headers.get('Authorization'))
-        console.log(decode)
+
         localStorage.setItem('Authorization', tokenAuth);
+        localStorage.setItem('Role', decode.roles);
+        localStorage.setItem('id', decode.user.id)
 
-        console.log(res)
-        if (res) {
 
-          this.log.next(true)
-          /**
-           * si on reçoit une réponse du serveur on enregistre le jwt et
-           * on passe loggedIn à true
-           */
+        // console.log(localStorage)
+        // console.log(localStorage.Role)
 
-          this.loggedIn.next(true);
+        this.loggedIn.next(true);
+
+        if (localStorage.Role.length > 10) {
+
+          console.log(localStorage.Role.length)
+
+          this.loggDAdmin.next(true);
+
         }
+
+        console.log(this.loggDAdmin)
+
+
       }),
 
         catchError(this.handleLoginError),
@@ -88,15 +100,11 @@ export class LoginService {
    */
   logout() {
 
-    console.log('ok');
-
     this.loggedIn.next(false);
-    localStorage.clear();
+    this.loggDAdmin.next(false);
+    localStorage.removeItem('Authorization');
 
     this.router.navigate(['']);
-
-    this.log.next(false)
-
 
   }
 

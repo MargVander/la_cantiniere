@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         // l'erreur dans la vue
         res => {
 
-          console.log(res)
+          // console.log(res)
           this.loading = false;
 
           // redirection

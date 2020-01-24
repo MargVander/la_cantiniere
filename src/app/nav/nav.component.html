@@ -16,9 +16,11 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['a-la-carte']">A la carte</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['users']">Users</a>
-            </li>
+            <div *ngIf="AdminLogged">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['users']">Users</a>
+                </li>
+            </div>
         </ul>
         <!-- Links right -->
         <ul class="navbar-nav">

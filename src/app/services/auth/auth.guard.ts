@@ -19,21 +19,13 @@ import { map, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthGuard implements CanActivate {
   constructor(
     // tslint:disable-next-line: no-shadowed-variable
     private LoginService: LoginService,
     private router: Router
   ) { }
-
-  // canActivate(): boolean {
-  //   if (this.LoginService.loggedIn()) {
-  //     return true
-  //   } else {
-  //     this.router.navigate(['/home'])
-  //     return false
-  //   }
-  // }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -52,4 +44,32 @@ export class AuthGuard implements CanActivate {
 
   }
 
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AdminGuard implements CanActivate {
+  constructor(
+    // tslint:disable-next-line: no-shadowed-variable
+    private LoginService: LoginService,
+    private router: Router
+  ) { }
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.LoginService.isLoggedAdmin
+      .pipe(
+        take(1),
+        map((isLoggedAdmin: boolean) => {
+          if (!isLoggedAdmin) {
+            this.router.navigate(['/login']);
+            return false;
+          }
+          return true;
+        }));
+  }
 }

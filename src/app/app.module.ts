@@ -37,7 +37,7 @@ import { ConstraintEditComponent } from './constraint-edit/constraint-edit.compo
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 // import { TokenInterceptor } from './services/token-interceptor';
-import { AuthGuard } from './services/auth/auth.guard';
+import { AuthGuard, AdminGuard } from './services/auth/auth.guard';
 
 
 @NgModule({
@@ -83,12 +83,8 @@ import { AuthGuard } from './services/auth/auth.guard';
     CommonModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptor,
-    //   multi: true
-    // },
     AuthGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })
