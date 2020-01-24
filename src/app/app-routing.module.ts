@@ -22,8 +22,13 @@ import { MenusComponent } from './menus/menus.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
+<<<<<<< HEAD
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { ProfilComponent } from './profil/profil.component';
+=======
+import { ProfilComponent } from './profil/profil.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+>>>>>>> f9bee196d4ac7ee262599bcbc13f623407a32c34
 import { AccueilComponent } from './accueil/accueil.component';
 
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
