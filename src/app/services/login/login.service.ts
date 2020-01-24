@@ -62,6 +62,8 @@ export class LoginService {
 
       .pipe(tap(res => {
         let tokenAuth = res.headers.get('Authorization');
+
+        console.log(tokenAuth)
         let decode = jwt_decode(res.headers.get('Authorization'))
 
         localStorage.setItem('Authorization', tokenAuth);

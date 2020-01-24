@@ -1,6 +1,6 @@
 <div class="container">
-    <a class="display-order" *ngIf="status===0" [routerLink]="" (click)="changeStatus(1)">Afficher les commandes emportées.</a>
-    <a class="display-order" *ngIf="status===1"  [routerLink]="" (click)="changeStatus(0)">Afficher les commandes non emportées.</a>
+    <a class="display-order" *ngIf="status===0" [routerLink]="" (click)="changeStatus(1)">Afficher les commandes emportées</a>
+    <a class="display-order" *ngIf="status===1"  [routerLink]="" (click)="changeStatus(0)">Afficher les commandes non emportées</a>
     <div class="center">
     <div class="days">
             <a class="wkday" [routerLink]="" (click)="getOrdersByDay(1)">Lundi</a>

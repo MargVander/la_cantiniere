@@ -16,14 +16,29 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['a-la-carte']">A la carte</a>
             </li>
-            <div *ngIf="AdminLogged">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['users']">Users</a>
-                </li>
-            </div>
+            <li class="nav-item" *ngIf="AdminLogged">
+                <a class="nav-link" [routerLink]="['users']">Users</a>
+            </li>
         </ul>
         <!-- Links right -->
         <ul class="navbar-nav">
+            <!-- Part admin -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['dashboard']" *ngIf="AdminLogged">Dashboard</a>
+            </li>
+            <!-- Dropdown user -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" *ngIf="logged">
+                    Mon compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="logged">
+                    <a class="dropdown-item" [routerLink]="['profil/:id']">Mon profil</a>
+                    <a class="dropdown-item" [routerLink]="['mes-commandes/:id']">Mes commandes</a>
+                </div>
+            </li>
+
+            <!-- Login/register & cart -->
             <li class="nav-item">
                 <div *ngIf='!logged'>
                     <a class="nav-link" [routerLink]="['login']">Connexion</a>
@@ -32,13 +47,15 @@
             <li class="nav-item">
                 <div *ngIf='logged'>
 
-                    <button type="input" (click)=logOut() class="nav-link"> Déconnexion
-                    </button>
+                    <a type="input" (click)=logOut() class="nav-link"> Déconnexion
+                    </a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['panier']">Panier</a>
+                <a class="nav-link" [routerLink]="['panier']" *ngIf="logged">Panier</a>
             </li>
+
+
         </ul>
     </div>
 </nav>
