@@ -8,15 +8,16 @@ import { LoginService } from '../services/login/login.service';
 })
 export class NavComponent implements OnInit {
 
-  alpha
+  logged: boolean = false;
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.alpha = this.loginService.ok()
+    this.loginService.isLoggedIn.subscribe(logged => { console.log(logged); this.logged = logged })
   }
 
   logOut() {
-    this.alpha = this.loginService.logout();
+    this.loginService.logout();
   }
 
 }
