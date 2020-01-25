@@ -50,7 +50,7 @@
 
         <div class="center">
 
-            <button type="submit" class="button"> modifier </button>
+            <button type="submit" class="button"> Modifier </button>
         </div>
 
     </form>
@@ -59,11 +59,11 @@
     <form *ngIf="user" (ngSubmit)="updateMoney()" [formGroup]="moneyForm">
 
         <div class="form-group">
-            <label for="amount"> ajouter du crédit </label>
+            <label for="amount"> Ajouter du crédit </label>
             <input class="form-control" type="number" formControlName="amount" required>
         </div>
 
-        <button type="submit" class="button"> ajouter </button>
+        <button type="submit" class="button"> Ajouter </button>
 
     </form>
 

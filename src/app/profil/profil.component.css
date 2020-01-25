@@ -28,3 +28,7 @@ h1{
 .cantiniere{
     margin-top: 28px;
 }
+.container{
+    justify-content: center;
+    margin-top: 20%;
+}

@@ -19,7 +19,3 @@ label{
     display: flex;
     justify-content: space-around;
 }
-
-.text-danger{
-    margin-bottom: 20px;
-}

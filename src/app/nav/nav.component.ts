@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../services/login/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  logged: boolean = false;
+  AdminLogged: Boolean = false
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    this.loginService.isLoggedIn.subscribe(logged => { this.logged = logged })
+    this.loginService.isLoggedAdmin.subscribe(AdminLogged => { this.AdminLogged = AdminLogged })
+  }
+
+  logOut() {
+    this.loginService.logout();
   }
 
 }
