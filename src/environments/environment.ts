@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+ urlServeurBackEnd: 'http://localhost:8080/lunchtime/',
+
+}; 
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -53,7 +53,7 @@ export class UserEditComponent implements OnInit {
   onSubmit() {
     this.userForm.value["isLunchLady"] = this.user.isLunchLady;
     this.userForm.value["sex"] = this.user.sex;
-    this.userService.editUser(this.id, this.userForm.value)
+    // this.userService.getUser(this.id, this.userForm.value)
     this.router.navigate([`/profil/${this.user.id}`])
 
 
