@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user/user.service'
 import { Subscription } from 'rxjs'
+import { Location } from '@angular/common'
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
 
@@ -57,5 +58,17 @@ export class UserEditComponent implements OnInit {
 
 
   // }
+
+  deleteAccount(id){
+    this.user.firstname = "xxxxxx"
+    this.user.name = "xxxxxx"
+    this.user.phone = 1234567890
+    this.user.address = "xxxxxxxxxx"
+    this.user.town = "xxxxxxxxxx"
+    this.user.password = "xxxxxx"
+    this.userService.editUser(id, this.user)
+    this.userService.deleteUser(id)
+
+  }
 
 }
