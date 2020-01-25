@@ -9,7 +9,7 @@ export class UserService {
 
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjEwMC4wMCwicG9zdGFsQ29kZSI6Ijc1MDAwIiwicmVnaXN0cmF0aW9uRGF0ZSI6MTU1MTUzNjI0ODAwMCwiZW1haWwiOiJ0b3RvQGdtYWlsLmNvbSIsImlzTHVuY2hMYWR5Ijp0cnVlLCJuYW1lIjoiRHVyYW50IiwiZmlyc3RuYW1lIjoiQWxiZXJ0IiwicGhvbmUiOiIwMTQ4NTY3ODk3IiwidG93biI6IlBhcmlzIiwic2V4IjowLCJzdGF0dXMiOjB9LCJyb2xlcyI6WyJST0xFX0xVTkNITEFEWSIsIlJPTEVfVVNFUiJdLCJpc3MiOiJzZWN1cmUtYXBpIiwiYXVkIjoic2VjdXJlLWFwcCIsInN1YiI6InRvdG9AZ21haWwuY29tIiwiZXhwIjoxNTc5MjYyNTk3fQ.gCCzty1hlkORf_KudKjpHpg83LKlrQQWsPlpjAWhTY6G6Q1Kq--4bStK9Mz5KPqCj7AU33vtEUxS-oq9LEj_vw'
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJhZGRyZXNzIjoiNDMgcnVlIGRlIGxhIFByYWlyaWUiLCJ3YWxsZXQiOjUuOTIsInBvc3RhbENvZGUiOiI3NTAwMCIsInJlZ2lzdHJhdGlvbkRhdGUiOjE1NTE1MzYyNDgwMDAsImVtYWlsIjoidG90b0BnbWFpbC5jb20iLCJpc0x1bmNoTGFkeSI6dHJ1ZSwibmFtZSI6IkR1cmFudCIsImZpcnN0bmFtZSI6Ik1pY2hlbGluZSIsInBob25lIjoiMDE0ODU2Nzg5NyIsInRvd24iOiJEdW5rZXJxdWUiLCJzZXgiOjAsInN0YXR1cyI6MH0sInJvbGVzIjpbIlJPTEVfTFVOQ0hMQURZIiwiUk9MRV9VU0VSIl0sImlzcyI6InNlY3VyZS1hcGkiLCJhdWQiOiJzZWN1cmUtYXBwIiwic3ViIjoidG90b0BnbWFpbC5jb20iLCJleHAiOjE1Nzk2Mjg1Mzh9.Bi1zoi1mgx9d3K5_leqYb6Sme2M62D58HAbRjOqf8hHGqxiLqVQc1y5NExCmIDXMLT6f0_i3aJYBtxfuX6uTJQ'
   });
 
   constructor(private http: HttpClient) { }
@@ -81,4 +81,21 @@ export class UserService {
     return obs;
   }
 
+  editUser(id, data: any) {
+    this.http.patch(`http://localhost:8080/lunchtime/user/update/${id}`, data, { headers: this.reqHeader })
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
+
+  deleteUser(id) {
+    this.http.delete(`http://localhost:8080/lunchtime/user/delete/${id}`, { headers: this.reqHeader })
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
 }
