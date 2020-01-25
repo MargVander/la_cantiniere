@@ -1,7 +1,11 @@
+import { User } from './../../models/user';
+import { environment } from './../../../environments/environment';
+import { Constraint } from './../../models/constraint';
+import { Observable } from 'rxjs';
+import { Order } from './../../models/order';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HeaderService } from '../header/header.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +16,14 @@ export class OrderService {
 
 
   constructor(private http: HttpClient, private headerService: HeaderService) { }
+
+  addOrder(data: Order): Observable<Order> {
+    const reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.put<Order>(environment.urlServeurBackEnd + 'order/add/', data, { headers: reqHeader });
+  }
 
   getConstraint() {
     return this.http.get(`http://localhost:8080/lunchtime/constraint/find/1`)
