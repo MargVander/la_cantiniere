@@ -19,6 +19,9 @@ li{
     bottom: 10px;
     left: 60%;
 }
+.cart:hover{
+    cursor: pointer;
+}
 .card-body{
     margin-bottom: 55px;
 }

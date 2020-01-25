@@ -5,6 +5,10 @@ import { Subscription } from 'rxjs'
 import { Location } from '@angular/common'
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
+import { HeaderService } from '../services/header/header.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 
 
 @Component({
@@ -22,6 +26,7 @@ export class UserEditComponent implements OnInit {
     this.route.params.subscribe(param => this.id = param.id)
 
   }
+
 
   ngOnInit() {
     this.getUser(this.id)
@@ -49,6 +54,8 @@ export class UserEditComponent implements OnInit {
         }
       )
   }
+
+
 
   // onSubmit() {
   //   this.userForm.value["isLunchLady"] = this.user.isLunchLady;

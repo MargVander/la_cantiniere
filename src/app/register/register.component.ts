@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       town: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       image64: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15), Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
       wallet: new FormControl(0),
       registrationDate: Date()
     })
