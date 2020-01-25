@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -16,11 +16,7 @@ import { PanierComponent } from './panier/panier.component';
 import { MenuSemaineComponent } from './menu-semaine/menu-semaine.component';
 import { ALaCarteComponent } from './a-la-carte/a-la-carte.component';
 import { ContactComponent } from './contact/contact.component';
-import { CagnotteComponent } from './cagnotte/cagnotte.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { PlatComponent } from './plat/plat.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { FooterComponent } from './footer/footer.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RegisterComponent } from './register/register.component';
 import { NewIngredientComponent } from './new-ingredient/new-ingredient.component';
@@ -38,7 +34,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConstraintEditComponent } from './constraint-edit/constraint-edit.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
-// import { TokenInterceptor } from './services/token-interceptor';
 import { AuthGuard, AdminGuard } from './services/auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -52,11 +47,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MenuSemaineComponent,
     ALaCarteComponent,
     ContactComponent,
-    CagnotteComponent,
-    CheckoutComponent,
-    PlatComponent,
     IngredientsComponent,
-    FooterComponent,
     ProfilComponent,
     RegisterComponent,
     NewIngredientComponent,
