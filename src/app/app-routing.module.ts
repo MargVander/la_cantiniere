@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
+  { path: 'panier', component: PanierComponent },
   /**
  * ces pages sont protégées par authguard
  */
@@ -47,7 +48,6 @@ const routes: Routes = [
   { path: 'commandes', component: CommandesComponent, canActivate: [AuthGuard] },
   { path: 'ingredients', component: IngredientsComponent, canActivate: [AuthGuard] },
   { path: 'newingredient', component: NewIngredientComponent, canActivate: [AuthGuard] },
-  { path: 'panier', component: PanierComponent },
   { path: 'newmeal', component: NewMealComponent, canActivate: [AuthGuard] },
   { path: 'newmenu', component: NewMenuComponent, canActivate: [AuthGuard] },
   { path: 'ingredientedit/:id', component: IngredientEditComponent, canActivate: [AuthGuard] },

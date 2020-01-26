@@ -50,9 +50,10 @@ export class LoginService {
   }
 
   private Admintoken(): boolean {
-    if (localStorage.Role.length > 10) {
-      return !!localStorage.getItem('Role');
-
+    if (localStorage.Role) {
+      if (localStorage.Role.length > 10) {
+        return !!localStorage.getItem('Role');
+      }
     }
   }
 
