@@ -29,14 +29,15 @@ export class RegisterComponent implements OnInit {
       sex: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       address: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(40)]),
-      isLunchLady: new FormControl('false'),
+      isLunchLady: new FormControl(false),
       postalCode: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
       town: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       image64: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
       wallet: new FormControl(0),
-      registrationDate: Date()
+      registrationDate: Date(),
+      status: new FormControl(0),
     })
   }
 

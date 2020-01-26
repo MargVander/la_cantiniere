@@ -27,7 +27,7 @@ export class HeaderService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${jwt}`
+        'Authorization': `${jwt}`
       })
     };
 

@@ -11,20 +11,21 @@ export class NewIngredientComponent implements OnInit {
 
   ingredientForm = this.formBuilder.group({
     label: ['', Validators.required],
-    description: ['', Validators.required], 
-    image: ['', Validators.required], 
+    description: ['', Validators.required],
+    image: ['', Validators.required],
   });
 
   constructor(private menuService: MenuService, private formBuilder: FormBuilder) {
-    
+
   }
-    
+
 
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.menuService.addIngredient(this.ingredientForm.value)
+    this.ingredientForm.reset()
   }
 
 }

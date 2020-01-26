@@ -12,7 +12,7 @@ export class NewMenuComponent implements OnInit {
 
   menuForm = this.formBuilder.group({
     label: ['', Validators.required],
-    description: ['', Validators.required], 
+    description: ['', Validators.required],
     image: ['', Validators.required],
     priceDF: ['', Validators.required],
     availableForWeeks: [],
@@ -20,7 +20,7 @@ export class NewMenuComponent implements OnInit {
   });
   public meals: any;
   private souscription: Subscription;
-  numbers = Array(52).fill(0).map((x,i)=>i);
+  numbers = Array(52).fill(0).map((x, i) => i);
 
   constructor(private menuService: MenuService, private formBuilder: FormBuilder) { }
 
@@ -28,21 +28,22 @@ export class NewMenuComponent implements OnInit {
     this.getMeals()
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.menuForm.value);
     this.menuService.addMenu(this.menuForm.value)
-    
+    this.menuForm.reset();
+
   }
 
-  getMeals(){
+  getMeals() {
     this.souscription = this.menuService.getMeals()
-    .subscribe(
-      resp => {
-        this.meals = resp;
-        console.log(this.meals);
-        
-      }
-    )    
+      .subscribe(
+        resp => {
+          this.meals = resp;
+          console.log(this.meals);
+
+        }
+      )
   }
 
 }
