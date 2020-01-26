@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuService } from '../services/menu/menu.service';
 import { Subscription } from 'rxjs'
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs'
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.css']
 })
-export class IngredientsComponent implements OnInit {
+export class IngredientsComponent implements OnInit, OnDestroy {
   public ingredients: any;
   private souscription: Subscription;
 
@@ -17,6 +17,10 @@ export class IngredientsComponent implements OnInit {
 
   ngOnInit() {
     this.getIngredients()
+  }
+
+  ngOnDestroy() {
+    this.souscription
   }
 
   getIngredients() {
@@ -31,8 +35,12 @@ export class IngredientsComponent implements OnInit {
   }
 
   deleteIngredient(id) {
-    this.menuService.deleteIngredient(id)
-    this.getIngredients()
+    this.souscription = this.menuService.deleteIngredient(id)
+      .subscribe(
+        resp => {
+          this.getIngredients()
+        }
+      )
   }
 
 }

@@ -10,11 +10,11 @@ import { Subscription } from 'rxjs'
   templateUrl: './new-meal.component.html',
   styleUrls: ['./new-meal.component.css']
 })
-export class NewMealComponent implements OnInit { 
+export class NewMealComponent implements OnInit {
 
   mealForm = this.formBuilder.group({
     label: ['', Validators.required],
-    description: ['', Validators.required], 
+    description: ['', Validators.required],
     image: ['', Validators.required],
     priceDF: ['', Validators.required],
     availableForWeeks: [],
@@ -22,7 +22,7 @@ export class NewMealComponent implements OnInit {
   });
   public ingredients: any;
   private souscription: Subscription;
-  numbers = Array(52).fill(0).map((x,i)=>i);
+  numbers = Array(52).fill(0).map((x, i) => i);
 
   constructor(private menuService: MenuService, private formBuilder: FormBuilder) { }
 
@@ -30,21 +30,22 @@ export class NewMealComponent implements OnInit {
     this.getIngredients()
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.mealForm.value);
     this.menuService.addMeal(this.mealForm.value)
-    
+    this.mealForm.reset();
+
   }
 
-  getIngredients(){
+  getIngredients() {
     this.souscription = this.menuService.getIngredients()
-    .subscribe(
-      resp => {
-        this.ingredients = resp;
-        console.log(this.ingredients);
-        
-      }
-    )    
+      .subscribe(
+        resp => {
+          this.ingredients = resp;
+          console.log(this.ingredients);
+
+        }
+      )
   }
 
 }

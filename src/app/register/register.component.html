@@ -4,7 +4,7 @@
     <form (ngSubmit)="inscription()" [formGroup]="registerForm">
         <div class="form-group">
             <label for="name">Prénom</label>
-            <input class="form-control" type="text" formControlName="name">
+            <input class="form-control" type="text" formControlName="firstname">
 
             <div class="red" *ngIf="name">
                 {{ name }}
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="surname">Nom</label>
-            <input class="form-control" type="text" formControlName="surname">
+            <input class="form-control" type="text" formControlName="name">
 
             <div class="red" *ngIf="surname">
                 {{ surname }}
@@ -21,84 +21,84 @@
 
         <div class="form-group">
 
-        <label for="email">Adresse mail</label>
-        <input class="form-control" type="email" formControlName="email">
+            <label for="email">Adresse mail</label>
+            <input class="form-control" type="email" formControlName="email">
 
-        <div class="red" *ngIf="email">
-            {{ email }}
+            <div class="red" *ngIf="email">
+                {{ email }}
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
+        <div class="form-group">
             <label for="password"> Mot de passe</label>
             <input class="form-control" type="password" formControlName="password" name="password">
-    
+
             <div class="red" *ngIf="password">
                 {{ password }}
             </div>
         </div>
 
-    <div class="form-group">
+        <div class="form-group">
 
-        <label for="sexe">Sexe</label>
-        <select class="form-control" formControlName="sex">
-            <option value="">Choisissez</option>
-            <option value="0">Homme</option>
-            <option value="1">Femme</option>
-        </select>
+            <label for="sexe">Sexe</label>
+            <select class="form-control" formControlName="sex">
+                <option value="">Choisissez</option>
+                <option value="0">Homme</option>
+                <option value="1">Femme</option>
+            </select>
 
-        <div class="red" *ngIf="sex">
-            {{ sex }}
-        </div>
-    </div>
-
-    <div class="form-group">
-
-        <label for="phone">Numéro de Téléphone</label>
-        <input class="form-control" type="tel" formControlName="phone">
-
-        <div class="red" *ngIf="phone">
-            {{ phone }}
-        </div>
-</div>
-
-<div class="form-group">
-        <label for="address"> Adresse</label>
-        <input class="form-control" type="text" formControlName="address">
-
-        <div class="red" *ngIf="address">
-            {{ address }}
-        </div>
+            <div class="red" *ngIf="sex">
+                {{ sex }}
+            </div>
         </div>
 
         <div class="form-group">
-        <label for="postalCode"> Code postal</label>
-        <input class="form-control" type="number" formControlName="postalCode">
 
-        <div class="red" *ngIf="postalCode">
-            {{ postalCode }}
-        </div>
-        </div>
+            <label for="phone">Numéro de Téléphone</label>
+            <input class="form-control" type="tel" formControlName="phone">
 
-        
-        <div class="form-group">
-        <label for="town"> Ville</label>
-        <input class="form-control" type="text" formControlName="town">
-
-        <div class="red" *ngIf="town">
-            {{ town }}
-        </div>
+            <div class="red" *ngIf="phone">
+                {{ phone }}
+            </div>
         </div>
 
         <div class="form-group">
-        <label for="image64"> Avatar</label>
-        <input class="form-control" type="url" formControlName="image64">
-    </div>
+            <label for="address"> Adresse</label>
+            <input class="form-control" type="text" formControlName="address">
+
+            <div class="red" *ngIf="address">
+                {{ address }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="postalCode"> Code postal</label>
+            <input class="form-control" type="number" formControlName="postalCode">
+
+            <div class="red" *ngIf="postalCode">
+                {{ postalCode }}
+            </div>
+        </div>
 
 
-    <div class="center">
+        <div class="form-group">
+            <label for="town"> Ville</label>
+            <input class="form-control" type="text" formControlName="town">
 
-        <button type="submit" class="btn">Valider</button>
-    </div>
+            <div class="red" *ngIf="town">
+                {{ town }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image64"> Avatar</label>
+            <input class="form-control" type="url" formControlName="image64">
+        </div>
+
+
+        <div class="center">
+
+            <button type="submit" class="btn">Valider</button>
+        </div>
     </form>
 </div>

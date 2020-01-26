@@ -9,34 +9,34 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  id:number;
+  id: number;
   orders: any;
   private souscription: Subscription;
   price: any;
   prices = [];
 
 
-  constructor(private route: ActivatedRoute, private orderService: OrderService) { 
-    this.route.params.subscribe(param=> this.id = param.id)
+  constructor(private route: ActivatedRoute, private orderService: OrderService) {
+    this.route.params.subscribe(param => this.id = param.id)
   }
 
   ngOnInit() {
     this.getOrders(this.id)
-    
-    
 
-    
+
+
+
   }
 
   getOrders(id) {
     this.souscription = this.orderService.getOrders(id)
-    .subscribe(
-      resp => {
-        this.orders = resp;
-        console.log(this.orders);
-        this.getAllPrices()
-      }
-    )  
+      .subscribe(
+        resp => {
+          this.orders = resp;
+          console.log(this.orders);
+          this.getAllPrices()
+        }
+      )
   }
 
   cancelOrder(id) {
@@ -45,23 +45,23 @@ export class OrderComponent implements OnInit {
 
   computePrice(orderId) {
     this.souscription = this.orderService.computePrice(orderId)
-    .subscribe(
-      resp => {
-        this.price = resp;
-        this.price = this.price.priceVAT
-        this.prices.push(this.price)
-        console.log(this.prices);
-        
+      .subscribe(
+        resp => {
+          this.price = resp;
+          this.price = this.price.priceVAT
+          this.prices.push(this.price)
+          console.log(this.prices);
 
-      }
-    )  
+
+        }
+      )
   }
 
   getAllPrices() {
     this.orders.forEach(order => {
       this.computePrice(order.id)
     });
-    
+
   }
 
 }

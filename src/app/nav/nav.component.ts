@@ -16,10 +16,13 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.loginService.isLoggedIn.subscribe(logged => { this.logged = logged })
     this.loginService.isLoggedAdmin.subscribe(AdminLogged => { this.AdminLogged = AdminLogged })
+
+    console.log(this.AdminLogged)
   }
 
   logOut() {
     this.loginService.logout();
+    console.log(this.AdminLogged)
   }
 
 }

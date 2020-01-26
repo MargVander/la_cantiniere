@@ -6,13 +6,13 @@ export class Order {
     status?: number;
     creationDate?: Date;
     menuId: number;
-    userId: number;
+    userId: any;
     quantities: Quantity[];
     menu?: Menu;
     constructor(
         id: number,
         menuId: number,
-        userId: number,
+        userId: any,
         status: number,
         creationDate: Date,
         quantities: Quantity[]

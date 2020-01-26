@@ -17,19 +17,24 @@ export class MenusComponent implements OnInit {
     this.getMenus()
   }
 
-  getMenus(){
+  getMenus() {
     this.souscription = this.menuService.getMenus()
-    .subscribe(
-      resp => {
-        this.menus = resp;
-        console.log(this.menus);
-        
-      }
-    )    
+      .subscribe(
+        resp => {
+          this.menus = resp;
+          console.log(this.menus);
+
+        }
+      )
   }
 
-  deleteMenu(id){
+  deleteMenu(id) {
     this.menuService.deleteMenu(id)
+      .subscribe(
+        resp => {
+          this.getMenus();
+        }
+      )
   }
 
 }

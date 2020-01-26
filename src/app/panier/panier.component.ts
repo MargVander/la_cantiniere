@@ -6,6 +6,7 @@ import { OrderService } from './../services/order/order.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { LoginService } from '../services/login/login.service';
 
 @Component({
   selector: 'app-panier',
@@ -14,7 +15,7 @@ import { Subscription } from 'rxjs';
 })
 export class PanierComponent implements OnInit {
 
-  constructor(private orderService: OrderService, private router: Router) { }
+  constructor(private orderService: OrderService, private router: Router, private loginService: LoginService) { }
 
   menuPanier: [];
   userConnected: User;
@@ -25,15 +26,19 @@ export class PanierComponent implements OnInit {
   listArticles: Menu[] = [];
   price: number;
   order: Order;
-   
+  logged: boolean = false
+
   ngOnInit() {
-   /* if (this.auth.isLogged()) {
-      this.isAuth = true;
-      this.userConnected = this.auth.getUserConnected();
-    } else {
-      this.userConnected = null;
-      this.isAuth = false;
-    }*/
+
+    this.loginService.isLoggedIn.subscribe(logged => { this.logged = logged })
+
+    /* if (this.auth.isLogged()) {
+       this.isAuth = true;
+       this.userConnected = this.auth.getUserConnected();
+     } else {
+       this.userConnected = null;
+       this.isAuth = false;
+     }*/
     this.recupererPanier();
     if (this.menuPanier != null) {
       this.calculerTotalPanier();
@@ -67,42 +72,43 @@ export class PanierComponent implements OnInit {
       for (let i = 0; i < this.listArticles.length; i++) {
         this.prixTotalPanier =
           this.prixTotalPanier +
-          this.listArticles[i].menu.priceDF * this.listArticles[i].quantitePlat;      }
+          this.listArticles[i].menu.priceDF * this.listArticles[i].quantitePlat;
+      }
     }
   }
 
-   creerLaCommande() {
-    const user = this.userConnected;
+  creerLaCommande() {
+    const user = localStorage.getItem('id');
     const menu = this.menuPanier;
 
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < this.listArticles.length; i++) {
-        // const element = this.listArticles[i];
-        // console.log(element.menu.id);
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.listArticles.length; i++) {
+      // const element = this.listArticles[i];
+      // console.log(element.menu.id);
 
-        this.order = {
-          status: 0,
-          creationDate: new Date(),
-          menuId: this.listArticles[i].menu.id,
-          userId: this.userConnected.id,
-          quantities: null
-        };
+      this.order = {
+        status: 0,
+        creationDate: new Date(),
+        menuId: this.listArticles[i].menu.id,
+        userId: 3,
+        quantities: null
+      };
 
-        this.orderService.addOrder(this.order).subscribe(
-          resp => {
-            this.order = resp; 
-            
-            localStorage.removeItem('panier');
-            this.router.navigate(['/']);
+      this.orderService.addOrder(this.order).subscribe(
+        resp => {
+          this.order = resp;
 
-            console.log('order retour: ', this.order);
-          },
-          error => {
-            console.log('Error in Order.ts ... addOrder()', error);
-            console.log('order: ', this.order);
-          }
-        );
-      }
-    
-  } 
+          localStorage.removeItem('panier');
+          this.router.navigate(['/']);
+
+          console.log('order retour: ', this.order);
+        },
+        error => {
+          console.log('Error in Order.ts ... addOrder()', error);
+          console.log('order: ', this.order);
+        }
+      );
+    }
+
+  }
 }

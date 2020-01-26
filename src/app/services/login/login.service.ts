@@ -30,7 +30,7 @@ export class LoginService {
    */
   public loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
-  public loggDAdmin = new BehaviorSubject<boolean>(false);
+  public loggDAdmin = new BehaviorSubject<boolean>(this.Admintoken());
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -47,6 +47,13 @@ export class LoginService {
   private tokenAvailable(): boolean {
     return !!localStorage.getItem('Authorization');
 
+  }
+
+  private Admintoken(): boolean {
+    if (localStorage.Role.length > 10) {
+      return !!localStorage.getItem('Role');
+
+    }
   }
 
   /**
@@ -97,6 +104,10 @@ export class LoginService {
     return localStorage.getItem('Authorization')
   }
 
+  logAdmin() {
+
+  }
+
   /**
    * Deconnexion
    */
@@ -104,17 +115,17 @@ export class LoginService {
 
     this.loggedIn.next(false);
     this.loggDAdmin.next(false);
-    localStorage.removeItem('Authorization');
+    localStorage.clear();
 
     this.router.navigate(['']);
 
   }
 
-    /**
-   * Mot de passe oublié
-   */
-  forgotPassword(email){
-    let obs:Observable<any>
+  /**
+ * Mot de passe oublié
+ */
+  forgotPassword(email) {
+    let obs: Observable<any>
     const url = 'http://localhost:8080/lunchtime/forgotpassword/';
     obs = this.http.post(url, email)
     console.log(obs)

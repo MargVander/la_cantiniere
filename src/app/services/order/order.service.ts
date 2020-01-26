@@ -14,15 +14,18 @@ export class OrderService {
 
   httpOptions = this.headerService.headerBuilder();
 
+  reqHeader = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + localStorage.getItem('token')
+  });
 
   constructor(private http: HttpClient, private headerService: HeaderService) { }
 
+
+
   addOrder(data: Order): Observable<Order> {
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token')
-    });
-    return this.http.put<Order>(environment.urlServeurBackEnd + 'order/add/', data, { headers: reqHeader });
+
+    return this.http.put<Order>(environment.urlServeurBackEnd + 'order/add/', data, { headers: this.reqHeader });
   }
 
   getConstraint() {
@@ -31,12 +34,8 @@ export class OrderService {
 
   editConstraint(data) {
 
-    this.http.patch(`http://localhost:8080/lunchtime/constraint/update/1`, data, this.httpOptions)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    console.log(this.httpOptions)
+    return this.http.patch(`http://localhost:8080/lunchtime/constraint/update/1`, data, this.httpOptions)
   }
 
   getOrdersByDay(day, dayAfter, status) {

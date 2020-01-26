@@ -26,12 +26,12 @@ export class MenuService {
 
   }
 
-  getIngredients() {
+  getIngredients(): Observable<any> {
 
     return this.http.get('http://localhost:8080/lunchtime/ingredient/findall', this.httpOptions)
   }
 
-  getIngredient(id): Observable<Meal[]>{
+  getIngredient(id): Observable<Meal[]> {
     return this.http.get<Meal[]>(`http://localhost:8080/lunchtime/ingredient/find/${id}`)
   }
 
@@ -45,15 +45,11 @@ export class MenuService {
       })
   }
 
-  deleteIngredient(id) {
+  deleteIngredient(id): Observable<any> {
     console.log(id);
 
-    this.http.delete(`http://localhost:8080/lunchtime/ingredient/delete/${id}`, this.httpOptions)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    return this.http.delete(`http://localhost:8080/lunchtime/ingredient/delete/${id}`, this.httpOptions)
+
   }
 
   addMeal(data: any) {
@@ -75,7 +71,7 @@ export class MenuService {
     return this.http.get(`http://localhost:8080/lunchtime/meal/find/${id}`)
   }
 
-getMealByName(label: string): Observable<Meal[]> {
+  getMealByName(label: string): Observable<Meal[]> {
     return this.http.get<Meal[]>(`http://localhost:8080/lunchtime/meal/find/${label}`)
   }
   getMealsByDay() {
@@ -92,15 +88,11 @@ getMealByName(label: string): Observable<Meal[]> {
       })
   }
 
-  deleteMeal(id) {
+  deleteMeal(id): Observable<any> {
     console.log(id);
 
-    this.http.delete(`http://localhost:8080/lunchtime/meal/delete/${id}`, this.httpOptions)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    return this.http.delete(`http://localhost:8080/lunchtime/meal/delete/${id}`, this.httpOptions)
+
   }
 
 
@@ -126,7 +118,7 @@ getMealByName(label: string): Observable<Meal[]> {
 
   getMenusByDay(): Observable<Menu[]> {
     return this.http.get<Menu[]>('http://localhost:8080/lunchtime/menu/findallavailablefortoday');
-  } 
+  }
 
   editMenu(id, data: any) {
 
@@ -138,28 +130,9 @@ getMealByName(label: string): Observable<Meal[]> {
       })
   }
 
-  deleteMenu(id) {
+  deleteMenu(id): Observable<any> {
     console.log(id);
 
-    this.http.delete(`http://localhost:8080/lunchtime/menu/delete/${id}`, this.httpOptions)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    return this.http.delete(`http://localhost:8080/lunchtime/menu/delete/${id}`, this.httpOptions)
   }
 }
-
-
-
-
-
-// addTask(data: any){
-//   this.http.post(environment.url, data)
-//       .subscribe(data => {
-//         console.log(data);
-//         this.router.navigate(['show']);
-//       }, error => {
-//         console.log(error);
-//       });
-// }
