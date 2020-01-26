@@ -22,22 +22,21 @@ export class RegisterComponent implements OnInit {
   password: string
 
   constructor(fb: FormBuilder, private userService: UserService) {
-
     this.registerForm = fb.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
-      surname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       sex: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       address: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(40)]),
-      isLunchLady: new FormControl(false),
+      isLunchLady: new FormControl('false'),
       postalCode: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
       town: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       image64: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       wallet: new FormControl(0),
       registrationDate: Date(),
-      status: new FormControl(0),
+      status: new FormControl(1)
     })
   }
 
@@ -51,6 +50,11 @@ export class RegisterComponent implements OnInit {
 
       console.log("ok")
       this.userService.setInscription(this.registerForm.value)
+        .subscribe(
+          rest => {
+            console.log(rest)
+          }
+        )
       this.registerForm.reset()
 
     }

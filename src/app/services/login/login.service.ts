@@ -115,7 +115,7 @@ export class LoginService {
 
     this.loggedIn.next(false);
     this.loggDAdmin.next(false);
-    localStorage.removeItem('Authorization');
+    localStorage.clear();
 
     this.router.navigate(['']);
 

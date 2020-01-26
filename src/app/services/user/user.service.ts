@@ -15,11 +15,10 @@ export class UserService {
 
   constructor(private http: HttpClient, private headerService: HeaderService) { }
 
-  setInscription(data: any) {
+  setInscription(data: any): Observable<any> {
 
     console.log(data)
-    let result = this.http.put('http://localhost:8080/lunchtime/user/register/', data)
-    return result;
+    return this.http.put('http://localhost:8080/lunchtime/user/register/', data);
   }
 
   getUsers(): Observable<any> {
