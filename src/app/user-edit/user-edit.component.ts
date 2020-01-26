@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { Router } from "@angular/router"
 import { HeaderService } from '../services/header/header.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoginService } from '../services/login/login.service';
 
 
 
@@ -22,7 +23,7 @@ export class UserEditComponent implements OnInit {
   private souscription: Subscription;
   userForm: FormGroup
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private loginService: LoginService) {
 
   }
 
@@ -77,16 +78,18 @@ export class UserEditComponent implements OnInit {
     }
   }
 
-  deleteAccount(id) {
+  deleteAccount() {
     this.user.firstname = "xxxxxx"
     this.user.name = "xxxxxx"
     this.user.phone = 1234567890
     this.user.address = "xxxxxxxxxx"
     this.user.town = "xxxxxxxxxx"
     this.user.password = "xxxxxx"
-    this.userService.editUser(id, this.user)
-    this.userService.deleteUser(id)
+    this.user.status = 1
+    this.userService.editUser(this.id, this.user)
+    this.userService.deleteUser(this.id)
 
+    this.loginService.logout();
   }
 
 }
