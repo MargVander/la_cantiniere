@@ -21,14 +21,14 @@
                 &nbsp; {{user.address}} {{user.postalCode}} {{user.town}}
             </div>
             <div class="twoparts">
-                <img class="icon" src="../../assets/img/phone.svg">
-                &nbsp; {{user.phone}}
+                <img class="icon" src="../../assets/img/euro.svg">
+                &nbsp; {{user.wallet}} €
             </div>
             <div class="twoparts">
                 <img class="icon" src="../../assets/img/at.svg">
                 &nbsp; {{user.email}}
             </div>
-            <button [routerLink]="['/profiledit', user.id]" class="btn">Editer le profil</button>
+            <button [routerLink]="['/profiledit']" class="btn">Editer le profil</button>
 
         </div>
     </div>

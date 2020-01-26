@@ -70,7 +70,7 @@ export class LoginService {
         localStorage.setItem('Role', decode.roles);
         localStorage.setItem('id', decode.user.id)
 
-
+        console.log(localStorage.getItem('id'))
         // console.log(localStorage)
         // console.log(localStorage.Role)
 
