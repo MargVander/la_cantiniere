@@ -1,21 +1,21 @@
 <div class="container">
-    <h1>Éditer</h1>
-    <form [formGroup]="ingredientForm" (ngSubmit)='onSubmit()' >
-        <div class="form-group">
-        <label for="">Nom</label><br/>
-        <input class="form-control" formControlName="label" type="text" value="Your value" required>
-      </div>
-      <div class="form-group">
-    
-        <label for="">Description</label><br/>
-        <input class="form-control" type="textarea" formControlName="description">
-      </div>
-      <div class="form-group">
-        <label for="">Image</label><br/>
-        <input class="form-control" type="text" formControlName="image" required>
-      </div>
-        <div class="center">
-          <button type="submit" class="btn" [disabled]="!ingredientForm.valid">Valider</button>
-      </div>
-      </form>
+  <h1>Éditer</h1>
+  <form [formGroup]="ingredientForm" (ngSubmit)='onSubmit()'>
+    <div class="form-group">
+      <label for="">Nom</label><br />
+      <input class="form-control" formControlName="label" type="text" value="Your value" required>
     </div>
+    <div class="form-group">
+
+      <label for="">Description</label><br />
+      <input class="form-control" type="textarea" formControlName="description">
+    </div>
+    <div class="form-group">
+      <label for="">Image</label><br />
+      <input class="form-control" type="text" formControlName="image" required>
+    </div>
+    <div class="center">
+      <button type="submit" class="btn">Valider</button>
+    </div>
+  </form>
+</div>
