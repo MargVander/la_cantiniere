@@ -36,6 +36,7 @@ import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard, AdminGuard } from './services/auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     OrderComponent,
     LoginComponent,
     DashboardComponent,
+    ForgotpasswordComponent,
   ],
 
   imports: [
