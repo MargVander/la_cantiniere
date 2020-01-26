@@ -59,7 +59,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'useredit/:id', component: UserEditComponent, canActivate: [AuthGuard] },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
-  { path: 'profiledit/:id', component: UserEditComponent, canActivate: [AuthGuard] },
+  { path: 'profiledit', component: UserEditComponent, canActivate: [AuthGuard] },
 
 ];
 
