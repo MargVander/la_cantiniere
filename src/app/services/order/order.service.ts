@@ -14,18 +14,13 @@ export class OrderService {
 
   httpOptions = this.headerService.headerBuilder();
 
-  reqHeader = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + localStorage.getItem('token')
-  });
-
   constructor(private http: HttpClient, private headerService: HeaderService) { }
 
 
 
   addOrder(data: Order): Observable<Order> {
 
-    return this.http.put<Order>(environment.urlServeurBackEnd + 'order/add/', data, { headers: this.reqHeader });
+    return this.http.put<Order>(environment.urlServeurBackEnd + 'order/add/', data, this.httpOptions);
   }
 
   getConstraint() {
