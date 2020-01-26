@@ -36,6 +36,24 @@ export class UserService {
 
   }
 
+  editUser(id, data: any) {
+    this.http.patch(`http://localhost:8080/lunchtime/user/update/${id}`, data, this.httpOptions)
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
+
+  deleteUser(id) {
+    this.http.delete(`http://localhost:8080/lunchtime/user/delete/${id}`, this.httpOptions)
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
+
   setActivation(id: number) {
 
     let obs: Observable<any>

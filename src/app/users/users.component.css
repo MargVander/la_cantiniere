@@ -1,6 +1,10 @@
 .container{
     margin-top: 20px;
 }
+.lien:hover{
+    cursor: pointer;
+}
+
 .addnew{
     color: #EA932A;
 }

@@ -26,6 +26,7 @@ import { ConstraintEditComponent } from './constraint-edit/constraint-edit.compo
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgotpassword', component: ForgotpasswordComponent },
   /**
  * ces pages sont protégées par authguard
  */

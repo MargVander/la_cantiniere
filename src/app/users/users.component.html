@@ -15,11 +15,11 @@
                 <td>{{user.wallet}}</td>
 
                 <td *ngIf="!user.status">
-                    <input type="button" value="désactiver" (click)="setDesactivation(user.id)">
+                    <a class="lien" value="désactiver" (click)="setDesactivation(user.id)">Désactiver</a>
                 </td>
 
                 <td *ngIf="user.status">
-                    <input type="button" value="activer" (click)="setActivation(user.id)">
+                    <a class="lien" value="activer" (click)="setActivation(user.id)">Activer</a>
                 </td>
 
                 <td>

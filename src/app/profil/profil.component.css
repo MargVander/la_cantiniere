@@ -9,6 +9,7 @@ h1{
 }
 .twoparts{
     display: flex;
+    flex-wrap: wrap;
 }
 .icon{
     height: 20px;
@@ -16,6 +17,9 @@ h1{
 }
 .second{
     margin-left: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
 }
 .profilepic{
     height: 180px;
@@ -28,7 +32,20 @@ h1{
 .cantiniere{
     margin-top: 28px;
 }
+
 .container{
-    justify-content: center;
-    margin-top: 20%;
+    padding: 15%;
+    flex-wrap: wrap;
+}
+
+.ultime{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profileTitle{
+    display: flex;
+    margin: auto;
 }

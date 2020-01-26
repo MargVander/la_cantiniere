@@ -110,6 +110,17 @@ export class LoginService {
 
   }
 
+    /**
+   * Mot de passe oublié
+   */
+  forgotPassword(email){
+    let obs:Observable<any>
+    const url = 'http://localhost:8080/lunchtime/forgotpassword/';
+    obs = this.http.post(url, email)
+    console.log(obs)
+    return obs;
+  };
+
   /**
   * Traitement des erreurs HTTP
   */
