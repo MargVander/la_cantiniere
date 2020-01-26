@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user">
     <h1>Édition du profil</h1>
 
     <form (ngSubmit)="onSubmit()" [formGroup]="userForm">

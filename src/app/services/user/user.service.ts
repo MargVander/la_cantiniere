@@ -79,7 +79,7 @@ export class UserService {
 
   }
 
-  adminUpdate(id: number, content: any) {
+  adminUpdate(id: any, content: any) {
 
     let obs: Observable<any>
     console.log(content)

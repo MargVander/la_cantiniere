@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/user/user.service'
-import { Subscription } from 'rxjs'
+import { UserService } from '../services/user/user.service';
+import { Subscription } from 'rxjs';
+
+
 
 
 
@@ -12,13 +13,12 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  id: number;
   public user: any;
   private souscription: Subscription;
+  id = localStorage.getItem('id')
 
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
-    this.route.params.subscribe(param => this.id = param.id)
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {

@@ -1,30 +1,39 @@
-<div class="container">
+<div class="container" *ngIf="user">
     <div class="ultime">
         <!-- <div class="twoparts"> -->
-            <div class="profileTitle">
-                <h1>
-                    {{user.firstname}} {{user.name}} &nbsp;
-                </h1>
-                <img class="icon cantiniere" *ngIf="user.isLunchLady" src="../../assets/img/chef.svg">
+        <div class="profileTitle">
+            <h1>
+                {{user.firstname}} {{user.name}} &nbsp;
+            </h1>
+            <div *ngIf="user.isLunchLady">
+                <img class="icon cantiniere" src="../../assets/img/chef.svg">
             </div>
+        </div>
         <!-- </div> -->
         <div class="twoparts">
             <div>
                 <div>
-                    <img class="profilepic" *ngIf="user.image" src="http://localhost:8080/lunchtime/{{user.image}}" alt="">
+                    <img class="profilepic" *ngIf="user.image" src="http://localhost:8080/lunchtime/{{user.image}}"
+                        alt="">
                     <img class="profilepic" *ngIf="!user.image" src="../../assets/img/default-profile.png" alt="">
                 </div>
             </div>
             <div class="second">
-                <button [routerLink]="['/profiledit', user.id]" class="btn">Editer le profil</button>
+                <button [routerLink]="['/profiledit']" class="btn">Editer le profil</button>
                 <div class="twoparts">
                     <img class="icon" src="../../assets/img/at.svg">
                     &nbsp; {{user.email}}
                 </div>
                 <div class="twoparts">
+                    <img class="icon" src="../../assets/img/euro.svg">
+                    &nbsp; {{user.wallet}} €
+                </div>
+
+                <div class="twoparts">
                     <img class="icon" src="../../assets/img/phone.svg">
                     &nbsp; {{user.phone}}
                 </div>
+
                 <div class="twoparts">
                     <img class="icon" src="../../assets/img/home.svg">
                     &nbsp; {{user.address}} {{user.postalCode}} {{user.town}}
@@ -32,6 +41,7 @@
                 <img class="icon" *ngIf="user.sex === 1" src="../../assets/img/woman.svg">
                 <img class="icon" *ngIf="user.sex === 0" src="../../assets/img/male.svg">
             </div>
+
         </div>
     </div>
 </div>

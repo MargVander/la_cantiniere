@@ -17,13 +17,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  id: number;
+  id = localStorage.getItem('id');
   public user: any;
   private souscription: Subscription;
   userForm: FormGroup
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private formBuilder: FormBuilder, private router: Router) {
-    this.route.params.subscribe(param => this.id = param.id)
+  constructor(private userService: UserService, private formBuilder: FormBuilder) {
 
   }
 
@@ -39,34 +38,46 @@ export class UserEditComponent implements OnInit {
         resp => {
           this.user = resp;
           console.log(this.user);
-          this.userForm = this.formBuilder.group({
-            firstname: [this.user.firstname, Validators.required],
-            name: [this.user.name],
-            image: [this.user.image],
-            email: [this.user.email, Validators.required],
-            password: ['', Validators.required],
-            sex: [this.user.sex, Validators.required],
-            phone: [this.user.phone, Validators.required],
-            address: [this.user.address, Validators.required],
-            postalCode: [this.user.postalCode, Validators.required],
-            town: [this.user.town, Validators.required],
-          });
+          this.formulaire();
         }
       )
   }
 
+  formulaire() {
+
+    this.userForm = this.formBuilder.group({
+      firstname: [this.user.firstname, Validators.required],
+      name: [this.user.name],
+      image: [this.user.image],
+      email: [this.user.email, Validators.required],
+      password: ['', Validators.required],
+      sex: [this.user.sex, Validators.required],
+      phone: [this.user.phone, Validators.required],
+      address: [this.user.address, Validators.required],
+      isLunchLady: [this.user.isLunchLady],
+      postalCode: [this.user.postalCode, Validators.required],
+      town: [this.user.town, Validators.required],
+    });
+  }
 
 
-  // onSubmit() {
-  //   this.userForm.value["isLunchLady"] = this.user.isLunchLady;
-  //   this.userForm.value["sex"] = this.user.sex;
-  //   this.userService.editUser(this.id, this.userForm.value)
-  //   this.router.navigate([`/profil/${this.user.id}`])
+  onSubmit() {
 
+    if (this.userForm.valid) {
 
-  // }
+      this.userService.adminUpdate(this.id, this.userForm.value)
+        .subscribe(
+          resp => {
+            this.userForm.reset();
+            this.getUser(this.id);
+            console.log(resp)
+          }
+        )
 
-  deleteAccount(id){
+    }
+  }
+
+  deleteAccount(id) {
     this.user.firstname = "xxxxxx"
     this.user.name = "xxxxxx"
     this.user.phone = 1234567890
