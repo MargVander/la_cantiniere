@@ -45,7 +45,7 @@ const routes: Routes = [
  */
   { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
   { path: 'constraintedit', component: ConstraintEditComponent, canActivate: [AdminGuard] },
-  { path: 'mes-commandes/:id', component: OrderComponent, canActivate: [AuthGuard] },
+  { path: 'mes-commandes', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'commandes', component: CommandesComponent, canActivate: [AdminGuard] },
   { path: 'ingredients', component: IngredientsComponent, canActivate: [AdminGuard] },
   { path: 'newingredient', component: NewIngredientComponent, canActivate: [AdminGuard] },

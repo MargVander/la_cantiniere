@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  id: number;
+  id: any = localStorage.getItem('id');
   orders: any;
   private souscription: Subscription;
   price: any;
@@ -17,19 +17,15 @@ export class OrderComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private orderService: OrderService) {
-    this.route.params.subscribe(param => this.id = param.id)
+
   }
 
   ngOnInit() {
-    this.getOrders(this.id)
-
-
-
-
+    this.getOrders()
   }
 
-  getOrders(id) {
-    this.souscription = this.orderService.getOrders(id)
+  getOrders() {
+    this.souscription = this.orderService.getOrders(this.id)
       .subscribe(
         resp => {
           this.orders = resp;
@@ -39,8 +35,14 @@ export class OrderComponent implements OnInit {
       )
   }
 
-  cancelOrder(id) {
-    this.orderService.cancelOrder(id);
+  cancelOrder(orderId) {
+
+    console.log(orderId)
+    this.orderService.cancelOrder(orderId)
+      .subscribe(data => {
+        console.log(data);
+        this.getOrders();
+      })
   }
 
   computePrice(orderId) {
