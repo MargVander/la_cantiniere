@@ -1,0 +1,32 @@
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Solde</th>
+                <th> Activation </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td> {{user.firstname}} </td>
+                <td>{{user.wallet}}</td>
+
+                <td *ngIf="!user.status">
+                    <a class="lien" value="désactiver" (click)="setDesactivation(user.id)">Désactiver</a>
+                </td>
+
+                <td *ngIf="user.status">
+                    <a class="lien" value="activer" (click)="setActivation(user.id)">Activer</a>
+                </td>
+
+                <td>
+                    <a [routerLink]="['/user', user.id]">Editer</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

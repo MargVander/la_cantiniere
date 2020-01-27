@@ -1,0 +1,11 @@
+a{
+    margin-right: 20px;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+.myText {
+    font-size: 14pt;
+}

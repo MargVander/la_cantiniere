@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Éditer</h1>
+    <form *ngIf="constraint" [formGroup]="constraintForm" (ngSubmit)='onSubmit()'>
+        <div class="form-group">
+            <label for="">Nombre de commandes maximums par jour</label><br />
+            <input class="form-control" formControlName="maximumOrderPerDay" type="number" required>
+        </div>
+        <div class="form-group">
+
+            <label for="">Temps limite pour commander</label><br />
+            <input class="form-control" type="time" step="1" formControlName="orderTimeLimit">
+        </div>
+        <div class="form-group">
+            <label for="">Montant de la T.V.A. (en %)</label><br />
+            <input class="form-control" type="number" formControlName="rateVAT" required>
+        </div>
+        <div class="center">
+            <button type="submit" class="btn" [disabled]="!constraintForm.valid">Valider</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Logo -->
+    <a class="navbar-brand logo" [routerLink]="['/']"><img src="../../assets/img/bucket-for-tea.svg" width="30"
+            height="30" class="d-inline-block align-top mr-2" alt="spoon">La
+        Cantinière</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Links left -->
+    <div class="collapse navbar-collapse myText" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['menu-semaine']">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['a-la-carte']">A la carte</a>
+            </li>
+        </ul>
+        <!-- Links right -->
+        <ul class="navbar-nav">
+            <!-- Part admin -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['dashboard']" *ngIf="AdminLogged">Dashboard</a>
+            </li>
+            <!-- Dropdown user -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" *ngIf="logged">
+                    Mon compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="logged">
+                    <a class="dropdown-item" [routerLink]="['profil']">Mon profil</a>
+                    <a class="dropdown-item" [routerLink]="['mes-commandes']">Mes commandes</a>
+                </div>
+            </li>
+
+            <!-- Login/register & cart -->
+            <li class="nav-item">
+                <div *ngIf='!logged'>
+                    <a class="nav-link" [routerLink]="['login']">Connexion</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div *ngIf='logged'>
+
+                    <a type="input" (click)=logOut() class="nav-link"> Déconnexion
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['panier']">Panier</a>
+            </li>
+
+
+        </ul>
+    </div>
+</nav>

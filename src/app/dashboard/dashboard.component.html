@@ -1,0 +1,89 @@
+<div class="title">DASHBOARD</div>
+<div class="container">
+    <!-- Card Menus, Plats, Ingrédients -->
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../../assets/img/meal.jfif" alt="Card image cap">
+        <!-- Card content -->
+        <div class="card-body pb-3">
+            <!-- Title -->
+            <h5 class="card-title">Menus</h5>
+            <!-- Text -->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+
+            <!-- Collapse Menus -->
+            <div class="collapse-content">
+                <div class="collapse" id="collapseMenu">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a routerLink='/newmenu' class="card-link">Ajouter un menu</a>
+                        </li>
+                        <li class="list-group-item"><a routerLink='/menus' class="card-link">Tous les menus</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="">
+                <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 deep-purple-text collapsed" data-toggle="collapse"
+                    href="#collapseMenu" aria-expanded="false" aria-controls="collapseMenu">Menus</a>
+            </div>
+
+            <!-- Collapse Plats -->
+            <div class="collapse-content">
+                <div class="collapse" id="collapseMeal">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a routerLink='/newmeal' class="card-link">Ajouter un plat</a>
+                        </li>
+                        <li class="list-group-item"><a routerLink='/meals' class="card-link">Tous les plats</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="">
+                <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 deep-purple-text collapsed" data-toggle="collapse"
+                    href="#collapseMeal" aria-expanded="false" aria-controls="collapseMeal">Plats</a>
+            </div>
+
+            <!-- Collapse Ingrédients -->
+            <div class="collapse-content">
+                <div class="collapse" id="collapseIngredient">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a routerLink='/newingredient' class="card-link">Ajouter un
+                                ingrédient</a></li>
+                        <li class="list-group-item"><a routerLink='/ingredients' class="card-link">Tous les
+                                ingrédients</a></li>
+                    </ul>
+                </div>
+                <hr class="">
+                <a class="btn btn-flat red-text p-1 my-1 mr-0 mml-1 deep-purple-text collapsed" data-toggle="collapse"
+                    href="#collapseIngredient" aria-expanded="false" aria-controls="collapseIngredient">Ingrédients</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Commandes -->
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../../assets/img/order.jfif" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Commandes</h5>
+            <p class="card-text">Gestion des commandes : afficher les commandes, payer une commande, supprimer une
+                commande...</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a routerLink='/commandes' class="card-link">Afficher les commandes</a>
+            </li>
+            <li class="list-group-item"><a routerLink='/constraintedit' class="card-link">Gérer mes contraintes</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Card Users -->
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../../assets/img/people.jfif" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Utilisateurs</h5>
+            <p class="card-text">Gestion des utilisateurs : rechercher un utilisateur, éditer un compte, supprimer un
+                compte...</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a routerLink='/users' class="card-link">Tous les utilisateurs</a></li>
+        </ul>
+    </div>
+</div>

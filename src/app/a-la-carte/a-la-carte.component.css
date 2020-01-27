@@ -1,0 +1,26 @@
+.container{
+    margin-top: 40px;
+}
+li{
+    list-style: none;
+}
+a{
+    color: rgb(117, 143, 66);
+}
+.card{
+    background-color: rgba(237, 234, 229, 0.37);
+    border: none;
+    position: relative;
+}
+.card-title{
+    text-align: center;
+}
+.cart{
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    right: 35%;
+}
+.card-body{
+    margin-bottom: 55px;
+}

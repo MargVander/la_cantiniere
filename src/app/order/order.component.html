@@ -1,0 +1,26 @@
+<div class="container">
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Menu</th>
+                <th>Plat</th>
+                <th>Prix</th>
+                <th>Annuler</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders; let index = index">
+                <td *ngIf="order.menu">{{order.menu.label}} : <br/> <span *ngFor="let meal of order.menu.meals">{{meal.label}}, </span></td>
+                <td *ngIf="!order.menu"></td>
+                <td><span *ngFor="let meal of order.quantityMeals">{{meal.quantity}} {{meal.meal.label}}, </span></td>
+                <td>{{prices[index]}}€</td>
+                <td>
+                    <button (click)="cancelOrder(order.id)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
