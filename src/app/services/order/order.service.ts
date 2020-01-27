@@ -56,14 +56,11 @@ export class OrderService {
       })
   }
 
-  cancelOrder(id) {
+  cancelOrder(id): Observable<any> {
 
-    this.http.patch(`http://localhost:8080/lunchtime/order/cancel/${id}`, {}, this.httpOptions)
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      })
+    console.log('ok')
+    return this.http.patch(`http://localhost:8080/lunchtime/order/cancel/${id}`, {}, this.httpOptions)
+
   }
 
   computePrice(orderId) {
